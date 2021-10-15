@@ -1,11 +1,4 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap');
 a {
   color: inherit;
   text-decoration: none;
@@ -13,4 +6,32 @@ a {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Urbanist', sans-serif;
+}
+
+.btn{
+  border: none !important;
+}
+
+.btn-primary{
+  color: black !important;
+  background-color: white !important;
+  font-size: 20px !important;
+}
+
+.dropdown-item{
+  color: rgba(0, 0, 0, 1) !important;
+  font-weight: 500 !important;
+  font-size: 16px;
+}
+
+.dropdown-item a{
+  color: black !important;
+  text-decoration: none !important;
+}
+
+h1,h2,h3,h4,h5,h6{
+  margin-bottom: 0 !important;
 }

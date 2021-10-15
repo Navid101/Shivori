@@ -1,0 +1,131 @@
+export  const slides = [
+    {
+        id:1,
+        image: "https://images.unsplash.com/photo-1616986491129-3e37cb654c82?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80"
+    },
+    {
+        id:2,
+        image: "https://images.unsplash.com/photo-1619239635762-8132f6dba51c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80"
+    },
+]
+
+
+export const categories = [
+    {
+        id:1,
+        name:"Saree",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fsaree.webp&w=256&q=75"
+    },
+    {
+        id:2,
+        name:"Kurti",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fkurti.webp&w=256&q=75"
+    },
+    {
+        id:3,
+        name:"Pant",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fpant.webp&w=256&q=75"
+    },
+    {
+        id:4,
+        name:"Salwar",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fsalwar.webp&w=256&q=75"
+    },
+
+]
+
+export const newIns = [
+    {
+        id:1,
+        image:"https://shivoribd.netlify.app/_next/image?url=%2Fassets%2Fnew_in%2Fsaree1.webp&w=640&q=75",
+        name:"Saree"
+    },
+    {
+        id:2,
+        image:"https://shivoribd.netlify.app/_next/image?url=%2Fassets%2Fnew_in%2Fsaree2.webp&w=640&q=75",
+        name:"Pant"
+    },
+    {
+        id:3,
+        image:"https://shivoribd.netlify.app/_next/image?url=%2Fassets%2Fnew_in%2Fsaree3.webp&w=640&q=75",
+        name:"Kurti"
+    },
+    {
+        id:4,
+        image:"https://shivoribd.netlify.app/_next/image?url=%2Fassets%2Fnew_in%2Fsaree4.webp&w=640&q=75",
+        name:"Salwar"
+    }
+]
+
+export const products = [
+    {
+        name:"Jamdani Saree",
+        price:200,
+        category: "Saree",
+        subCategory:"Half Silk",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F1.webp&w=384&q=75"
+    },
+    {
+        name:"Georget Saree",
+        price:250,
+        category: "kurti",
+        subCategory:"Cotton",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
+    },
+    {
+        name:"Handmade Saree",
+        price:1000,
+        category:'Saree',
+        subCategory:"Cotton",
+        image:"https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F3.webp&w=384&q=75"
+    },
+    {
+        name:"Stiched Saree",
+        price:1200,
+        category:'Saree',
+        subCategory:"Half Silk",
+        image:"https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F4.webp&w=384&q=75"
+    },
+    {
+        name:"Jamdani Saree",
+        price:200,
+        category:'Saree',
+        subCategory:"Jamdani",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F1.webp&w=384&q=75"
+    },
+    {
+        name:"Georget Saree",
+        price:250,
+        category:'Saree',
+        subCategory:"Cotton",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
+    },
+    {
+        name:"Handmade Saree",
+        price:1000,
+        category:'Saree',
+        subCategory:"Half Cotton",
+        image:"https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F3.webp&w=384&q=75"
+    },
+    {
+        name:"Stiched Saree",
+        price:1200,
+        category:'Saree',
+        subCategory:"Half Silk",
+        image:"https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F4.webp&w=384&q=75"
+    },
+    {
+        name:"Jamdani Saree",
+        price:200,
+        category:'Saree',
+        subCategory:"Cotton",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F1.webp&w=384&q=75"
+    },
+    {
+        name:"Georget Saree",
+        price:250,
+        category:'Saree',
+        subCategory:"Cotton",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
+    }
+]

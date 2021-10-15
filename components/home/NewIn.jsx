@@ -1,0 +1,68 @@
+import React from 'react'
+import styled from 'styled-components'
+import { newIns } from '../../data'
+
+const Section = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+const Container = styled.div`
+    width: 90%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+
+    @media (max-width:768px){
+        grid-template-columns: 1fr;
+    }
+`
+
+const ImageContainer =  styled.div`
+    width: 100%;
+    height: auto;
+    position: relative;
+`
+
+const Image = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`
+
+const Overlay =  styled.div`
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    align-content: center;
+    text-align: center;
+    background-color: rgba(0,89,76,.3);
+    color: white;
+    font-weight: 400;
+    padding: 10px;
+`
+
+const NewIn = () => {
+    return (
+        <Section>
+            <h1>New In</h1>
+            <Container>
+                {newIns.map((newIn)=>{
+                    return(
+                        <ImageContainer key={newIn.id}>
+                            <Image src={newIn.image}></Image>
+                            <Overlay><h3>{newIn.name}</h3></Overlay>
+                        </ImageContainer>
+                    )
+                })}
+            </Container>            
+        </Section>
+    )
+}
+
+export default NewIn
