@@ -22,11 +22,15 @@ const Container = styled.div`
     }
 `
 
-
+const ImageContainer = styled.div`
+    width: 250px;
+    height: 250px;
+`
 
 const Image = styled.img`
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
 `
 
 const Categories = () => {
@@ -37,8 +41,10 @@ const Categories = () => {
                 {categories.map((category)=>{
                     return(
                         <a href="http://youtube.com" key={category.id}>
-                            <Image  src={category.image}>
-                            </Image>
+                            <ImageContainer>
+                                <Image  src={category.image}>
+                                </Image>
+                            </ImageContainer>
                         </a>
 
                     )
