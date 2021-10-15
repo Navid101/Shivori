@@ -14,22 +14,22 @@ export const categories = [
     {
         id:1,
         name:"Saree",
-        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fsaree.webp&w=256&q=75"
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fsaree.webp&w=256&q=100"
     },
     {
         id:2,
         name:"Kurti",
-        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fkurti.webp&w=256&q=75"
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fkurti.webp&w=256&q=100"
     },
     {
         id:3,
         name:"Pant",
-        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fpant.webp&w=256&q=75"
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fpant.webp&w=256&q=100"
     },
     {
         id:4,
         name:"Salwar",
-        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fsalwar.webp&w=256&q=75"
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Ficons%2Fsalwar.webp&w=256&q=100"
     },
 
 ]
@@ -68,7 +68,7 @@ export const products = [
     {
         name:"Georget Saree",
         price:250,
-        category: "kurti",
+        category: "Kurti",
         subCategory:"Cotton",
         image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
     },
