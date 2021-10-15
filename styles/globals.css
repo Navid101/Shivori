@@ -35,3 +35,7 @@ a {
 h1,h2,h3,h4,h5,h6{
   margin-bottom: 0 !important;
 }
+
+.MuiBadge-colorSecondary{
+  background-color: rgba(0, 89, 76, 1) !important;
+}
