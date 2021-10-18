@@ -101,7 +101,6 @@ const product = () => {
     const singleProduct = products.filter(item=>item.sku===product)
     return (
         <Section>
-            {console.log(singleProduct)}
             {/* <Container>
                 <ImageContainer>
                     <MainImage src="/assets/webp/2.webp"></MainImage>
