@@ -88,6 +88,7 @@ export const products = [
         price:1200,
         category:'Saree',
         subCategory:"Half Silk",
+        size:["S","M","L","XL"],
         image:"https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F4.webp&w=384&q=75"
     },
     {

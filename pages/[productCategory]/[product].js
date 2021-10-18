@@ -101,51 +101,32 @@ const product = () => {
     const singleProduct = products.filter(item=>item.sku===product)
     return (
         <Section>
-            {/* <Container>
-                <ImageContainer>
-                    <MainImage src="/assets/webp/2.webp"></MainImage>
-                    <SmallImageContainer>
-                        <SmallImage src="/assets/webp/2.webp"></SmallImage>
-                        <SmallImage src="/assets/webp/2.webp"></SmallImage>
-                        <SmallImage src="/assets/webp/2.webp"></SmallImage>
-                    </SmallImageContainer>
-                </ImageContainer>
-                <ProductInfoContainer>
-                    <h3>Handloomed Saree</h3>
-                    <h3>TK 200</h3>
-                    {items.map((item)=>{
-                        if(item.size){
-                            return <FilterSize subCategories={item.size} key={item.id}></FilterSize>
-                        }
-                    })}
-                    <ButtonContainer>
-                        <Button>ADD TO CART</Button>
-                    </ButtonContainer>
-                </ProductInfoContainer>
-            </Container> */}
-
-            <Container>
-                <ImageContainer>
-                    <MainImage src="/assets/webp/2.webp"></MainImage>
-                    <SmallImageContainer>
-                        <SmallImage src="/assets/webp/2.webp"></SmallImage>
-                        <SmallImage src="/assets/webp/2.webp"></SmallImage>
-                        <SmallImage src="/assets/webp/2.webp"></SmallImage>
-                    </SmallImageContainer>
-                </ImageContainer>
-                <ProductInfoContainer>
-                    <h3>Handloomed Saree</h3>
-                    <h3>TK 200</h3>
-                    {items.map((item)=>{
-                        if(item.size){
-                            return <FilterSize subCategories={item.size} key={item.id}></FilterSize>
-                        }
-                    })}
-                    <ButtonContainer>
-                        <Button>ADD TO CART</Button>
-                    </ButtonContainer>
-                </ProductInfoContainer>
-            </Container>
+            {singleProduct.map((item)=>{
+                return(
+                    <Container key={item.sku}>
+                    <ImageContainer>
+                        <MainImage src={item.image}></MainImage>
+                        <SmallImageContainer>
+                            <SmallImage src={item.image}></SmallImage>
+                            <SmallImage src={item.image}></SmallImage>
+                            <SmallImage src={item.image}></SmallImage>
+                        </SmallImageContainer>
+                    </ImageContainer>
+                    <ProductInfoContainer>
+                        <h3>{item.name}</h3>
+                        <h3>TK {item.price}</h3>
+                        {singleProduct.map((item)=>{
+                            if(item.size){
+                                return <FilterSize subCategories={item.size} key={item.sku}></FilterSize>
+                            }
+                        })}
+                        <ButtonContainer>
+                            <Button>ADD TO CART</Button>
+                        </ButtonContainer>
+                    </ProductInfoContainer>
+                </Container>
+                )
+            })}
         </Section>
     )
 }
