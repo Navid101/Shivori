@@ -60,6 +60,7 @@ export const newIns = [
 export const products = [
     {
         name:"Jamdani Saree",
+        sku:"001",
         price:200,
         category: "Saree",
         subCategory:"Half Silk",
@@ -67,6 +68,7 @@ export const products = [
     },
     {
         name:"Georget Saree",
+        sku:"002",
         price:250,
         category: "Kurti",
         subCategory:"Cotton",
@@ -74,6 +76,7 @@ export const products = [
     },
     {
         name:"Handmade Saree",
+        sku:"003",
         price:1000,
         category:'Saree',
         subCategory:"Cotton",
@@ -81,6 +84,7 @@ export const products = [
     },
     {
         name:"Stiched Saree",
+        sku:"004",
         price:1200,
         category:'Saree',
         subCategory:"Half Silk",
@@ -88,6 +92,7 @@ export const products = [
     },
     {
         name:"Jamdani Saree",
+        sku:"005",
         price:200,
         category:'Saree',
         subCategory:"Jamdani",
@@ -95,6 +100,7 @@ export const products = [
     },
     {
         name:"Georget Saree",
+        sku:"006",
         price:250,
         category:'Saree',
         subCategory:"Cotton",
@@ -102,6 +108,7 @@ export const products = [
     },
     {
         name:"Handmade Saree",
+        sku:"007",
         price:1000,
         category:'Saree',
         subCategory:"Half Cotton",
@@ -109,6 +116,7 @@ export const products = [
     },
     {
         name:"Stiched Saree",
+        sku:"008",
         price:1200,
         category:'Saree',
         subCategory:"Half Silk",
@@ -116,6 +124,7 @@ export const products = [
     },
     {
         name:"Jamdani Saree",
+        sku:"009",
         price:200,
         category:'Saree',
         subCategory:"Cotton",
@@ -123,6 +132,7 @@ export const products = [
     },
     {
         name:"Georget Saree",
+        sku:"010",
         price:250,
         category:'Saree',
         subCategory:"Cotton",

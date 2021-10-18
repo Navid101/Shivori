@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { newIns } from '../../data'
+import Link from 'next/link'
 
 const Section = styled.div`
     width: 100%;
@@ -54,10 +55,12 @@ const NewIn = () => {
             <Container>
                 {newIns.map((newIn)=>{
                     return(
-                        <ImageContainer key={newIn.id}>
+                        <Link href={`/${newIn.name.toLowerCase()}`} key={newIn.id}>
+                        <ImageContainer key={newIn.id} style={{cursor:"pointer"}}>
                             <Image src={newIn.image}></Image>
                             <Overlay><h3>{newIn.name}</h3></Overlay>
                         </ImageContainer>
+                        </Link>
                     )
                 })}
             </Container>            

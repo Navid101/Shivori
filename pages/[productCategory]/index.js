@@ -6,6 +6,7 @@ import Card from '../../components/productCategory/Card'
 import Pagination from '../../components/productCategory/Pagination'
 import Filter from '../../components/productCategory/Filter'
 import Error404 from '../../components/Error404'
+import Link from 'next/link'
 
 const Section = styled.div`
     padding-top: 1rem;
@@ -14,6 +15,15 @@ const Section = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+`
+
+const A = styled.a`
+    text-decoration: none;
+    color: black;
+
+    &:hover{
+        color: black;
+    }
 `
 
 const Container = styled.div`
@@ -67,7 +77,11 @@ const ProductCategory = () => {
             <Container>
                 {currentProducts.map((product,index)=>{
                     return(
+                        <Link href={`/${productCategory}/${product.sku}`} passHref>
+                        <A>
                         <Card key={index} image={product.image} price={product.price} name={product.name}></Card>
+                        </A>
+                        </Link>
                     )
                 })}
             </Container>

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { categories } from '../../data'
+import Link from 'next/link'
 
 const Section = styled.div`
     width: 100%;
@@ -40,12 +41,12 @@ const Categories = () => {
             <Container>
                 {categories.map((category)=>{
                     return(
-                        <a href="http://youtube.com" key={category.id}>
-                            <ImageContainer>
+                        <Link href={`/${category.name.toLowerCase()}`} key={category.id}>
+                            <ImageContainer style={{cursor:"pointer"}}>
                                 <Image  src={category.image}>
                                 </Image>
                             </ImageContainer>
-                        </a>
+                        </Link>
 
                     )
                 })}

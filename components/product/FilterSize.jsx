@@ -32,15 +32,12 @@ const Option = styled.option`
     width: 30px;
 `
 
-const Filter = ({subCategories}) => {
+const FilterSize = ({subCategories}) => {
     return (
         <FilterContainer>
             <FilterItem>
-                <FilterText>Filter Products</FilterText>
+                <FilterText>Select Size</FilterText>
                 <Select>
-                    <Option>
-                        All
-                    </Option>
                     {subCategories.map((subCategory,index)=>{
                         return(
                             <Option key={index}>{subCategory}</Option>
@@ -48,22 +45,8 @@ const Filter = ({subCategories}) => {
                     })}
                 </Select>
             </FilterItem>
-            <FilterItem>
-                <FilterText>Sort Products</FilterText>
-                <Select>
-                    <Option>
-                        Newest
-                    </Option>
-                    <Option>
-                        Low to High
-                    </Option>
-                    <Option>
-                        High to Low
-                    </Option>
-                </Select>
-            </FilterItem>
         </FilterContainer>
     )
 }
 
-export default Filter
+export default FilterSize
