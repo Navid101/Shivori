@@ -23,15 +23,14 @@ const Increament = styled.button`
     height: 2rem;
     font-weight: bold;
     border: none;
-
     background-color: white;
-
 `
 
 const Button = () => {
     const [count,setCount] = useState(1);
     return(
         <Container>
+            <h4>Quantity: </h4>
             <Decreament onClick={()=>count===1?setCount(1):setCount(count-1)}>-</Decreament>
             <h4>{count}</h4>
             <Increament onClick={()=>setCount(count+1)}>+</Increament>

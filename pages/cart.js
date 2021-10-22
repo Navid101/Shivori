@@ -17,19 +17,20 @@ const Section = styled.div`
 
 const ProductContainer = styled.div`
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 80%;
     padding-bottom: 1rem;
-    border-bottom: 1px solid gray;
 `
 const CartTotal = styled.div`
-width: 55%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
+    border-top: 1px solid black;
+    padding-top: 10px;
 
     @media(max-width:768px){
         align-items: center;
@@ -54,7 +55,7 @@ const Button = styled.button`
     }
 `
 
-const dumdum = [1,2,3,4]
+const dumdum = [1,2]
 
 const dummyProduct = {
     name:"Handmade Saree",
@@ -78,8 +79,6 @@ const cart = () => {
         <Section>
             <h1>Your Shopping Cart</h1>
             <ProductContainer>
-                <ProductItem name={dummyProduct2.name} value={dummyProduct.value} price={dummyProduct.price} image={dummyProduct.image}></ProductItem>
-
                 {dumdum.map((dum)=>{
                     return (
                     <ProductItem name={dummyProduct.name} value={dummyProduct.value} price={dummyProduct.price} image={dummyProduct.image}></ProductItem>

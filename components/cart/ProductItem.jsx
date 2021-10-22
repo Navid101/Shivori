@@ -5,15 +5,16 @@ import Button from './Button'
 
 
 const Container = styled.div`
+    position: relative;
    width: 100%;
    display: grid;
    align-items: center;
    justify-items: flex-start;
-   grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+   grid-template-columns: 3fr 2fr 2fr 2fr 1fr;
    padding: 10px 0;
 
    @media (max-width:768px){
-       width: 90%;
+       width: 60%;
        display: flex;
        align-items: flex-start;
        justify-content: center;
