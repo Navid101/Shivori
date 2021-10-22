@@ -71,9 +71,11 @@ const Navbar = () => {
                         })}
                     </DropdownButton>
                     <MenuItem>
+                    <Link href="/cart">
                         <Badge badgeContent={4} color="secondary">
                             <ShoppingCartOutlined></ShoppingCartOutlined>
                         </Badge>
+                    </Link>
                     </MenuItem>
                 </Right>
             </Wrapper>

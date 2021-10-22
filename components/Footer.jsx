@@ -52,7 +52,6 @@ const FooterLink = styled.a`
 const Footer = () => {
     return (
         <Section>
-            {console.log("Hello Motherfucker")}
             <Container>
                 <Left>
                     <Link href="/refund"><FooterLink>Refund And Return Policy</FooterLink></Link>
