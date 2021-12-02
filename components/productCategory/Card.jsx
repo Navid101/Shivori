@@ -22,10 +22,13 @@ const Image = styled.img`
     height: 100%;
     object-fit: cover;
 `
-const Text = styled.h5`
-    font-weight: 600;
+const Text = styled.h4`
+    color: black;
+    font-size: 16px;
 
 `
+
+
 
 const Card = ({image, name, price}) => {
     return (
@@ -33,8 +36,8 @@ const Card = ({image, name, price}) => {
             <ImageContainer>
                 <Image src={image}/>
             </ImageContainer>
-            <a>{name}</a>
-            <a>{`TK ${price}`}</a>
+            <Text>{name}</Text>
+            <Text>{`TK ${price}`}</Text>
         </Container>
     )
 }

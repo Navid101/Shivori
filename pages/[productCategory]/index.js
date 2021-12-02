@@ -76,7 +76,7 @@ const ProductCategory = () => {
             <Container>
                 {currentProducts.map((product,index)=>{
                     return(
-                        <Link href={`/${productCategory}/${product.sku}`} passHref>
+                        <Link href={`/${productCategory}/${product.sku}`} passHref key={index}>
                         <A>
                         <Card key={index} image={product.image} price={product.price} name={product.name}></Card>
                         </A>
