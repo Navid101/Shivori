@@ -75,9 +75,6 @@ const CrossButton = styled.button`
 
 
 
-
-
-
 const ProductItem = ({name,value,price,image}) => {
     return (
         <Container>

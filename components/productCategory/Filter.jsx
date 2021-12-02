@@ -19,14 +19,12 @@ const FilterItem = styled.div`
     align-items: center;
     justify-content: center;
 `
-const FilterText = styled.h4`
-    font-size: 20px;
-    font-weight: 600;
-`
+
 
 const Select = styled.select`
     padding: 10px;
     margin-left: 20px;
+    cursor: pointer;
 `
 const Option = styled.option`
     width: 30px;
@@ -36,7 +34,7 @@ const Filter = ({subCategories}) => {
     return (
         <FilterContainer>
             <FilterItem>
-                <FilterText>Filter Products</FilterText>
+                <a>Filter Products</a>
                 <Select>
                     <Option>
                         All
@@ -49,7 +47,7 @@ const Filter = ({subCategories}) => {
                 </Select>
             </FilterItem>
             <FilterItem>
-                <FilterText>Sort Products</FilterText>
+                <a>Sort Products</a>
                 <Select>
                     <Option>
                         Newest

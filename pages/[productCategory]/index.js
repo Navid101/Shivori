@@ -35,8 +35,7 @@ const Container = styled.div`
     padding-top: 2rem;
 
     @media (max-width:768px){
-        grid-template-columns: 1fr;
-        justify-items: center;
+        grid-template-columns: repeat(2,1fr);
     }
 `
 

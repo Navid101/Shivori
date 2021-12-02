@@ -11,6 +11,10 @@ const Container = styled.div`
 const ImageContainer = styled.div`
     height: 360px;
     width: 285px;
+    @media (max-width:768px){
+        height: auto;
+        width: auto;
+    }
 `
 
 const Image = styled.img`
@@ -29,8 +33,8 @@ const Card = ({image, name, price}) => {
             <ImageContainer>
                 <Image src={image}/>
             </ImageContainer>
-            <Text >{name}</Text>
-            <Text >{`TK ${price}`}</Text>
+            <a>{name}</a>
+            <a>{`TK ${price}`}</a>
         </Container>
     )
 }

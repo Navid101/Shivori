@@ -14,6 +14,7 @@ const Section = styled.div`
 `
 
 const Container = styled.div`
+    position: relative;
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -54,8 +55,15 @@ const SmallImage = styled.img`
 const ProductInfoContainer = styled.div`
     flex: 1;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
+    align-items: flex-start;
     row-gap: 1.5rem;
+
+    @media (max-width:768px){
+        width: 100%;
+        align-items: flex-start;
+    }
 
 `
 
