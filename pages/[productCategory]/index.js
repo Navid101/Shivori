@@ -28,13 +28,16 @@ const A = styled.a`
 
 const Container = styled.div`
     width: 90%;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 1.5rem;
-    row-gap: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: space-between;
     padding-top: 2rem;
 
     @media (max-width:768px){
+        display: grid;
+        gap: 1.5rem;
+        row-gap: 3rem;
         grid-template-columns: repeat(2,1fr);
     }
 `
