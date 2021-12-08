@@ -30,7 +30,7 @@ const Container = styled.div`
     width: 90%;
     display: flex;
     flex-wrap: wrap;
-    gap: 3rem;
+    gap: 5rem;
     justify-content: space-between;
     padding-top: 2rem;
 
@@ -52,6 +52,7 @@ const ProductCategory = () => {
     const indexOFLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOFLastProduct - productsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct,indexOFLastProduct);   
+    const filteredProducts = currentProducts.filter((item=>item.category.toLowerCase()===productCategory))
 
     //Change Page
     const paginate = (pageNumber)=> setCurrentPage(pageNumber)
@@ -69,7 +70,8 @@ const ProductCategory = () => {
     if(!(categories.includes(`${productCategory}`.toLowerCase()))){
         return <Error404></Error404>
     }
-
+    
+    console.log(filteredProducts)
 
     return (
 
@@ -77,7 +79,7 @@ const ProductCategory = () => {
             <h1>{`${productCategory}`.toUpperCase()}</h1>
             <Filter subCategories={subCategories}></Filter>
             <Container>
-                {currentProducts.map((product,index)=>{
+                {filteredProducts.map((product,index)=>{
                     return(
                         <Link href={`/${productCategory}/${product.sku}`} passHref key={index}>
                         <A>

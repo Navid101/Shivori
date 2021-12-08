@@ -138,5 +138,13 @@ export const products = [
         category:'Saree',
         subCategory:"Cotton",
         image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
+    },
+    {
+        name:"Georget Pant",
+        sku:"0101",
+        price:2500,
+        category:'Pant',
+        subCategory:"Cotton",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
     }
 ]

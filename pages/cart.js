@@ -4,7 +4,7 @@ import ProductItem from '../components/cart/ProductItem'
 import { products } from '../data'
 
 const Section = styled.div`
-    padding-top: 3rem;
+    padding: 7.5rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,6 +22,7 @@ const ProductContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 80%;
+    height: auto;
     padding-bottom: 1rem;
 `
 const CartTotal = styled.div`
