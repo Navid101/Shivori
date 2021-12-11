@@ -87,6 +87,7 @@ const ProductCategory = () => {
     if(!(value==="All")){
         return(
             <Section>
+                <h1>{`${productCategory}`.toUpperCase()}</h1>   
                 <Filter subCategories={subCategories} setValue={setValue}></Filter>
                 <Container>
                     {(filteredProducts.filter(item=>item.subCategory===value)).map((product,index)=>{
