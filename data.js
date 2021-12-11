@@ -140,11 +140,19 @@ export const products = [
         image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
     },
     {
-        name:"Georget Pant",
+        name:"Pant",
         sku:"0101",
         price:2500,
         category:'Pant',
         subCategory:"Cotton",
+        image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
+    },
+    {
+        name:"Pant",
+        sku:"A012",
+        price:2600,
+        category:'Pant',
+        subCategory:"Fabric",
         image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
     }
 ]

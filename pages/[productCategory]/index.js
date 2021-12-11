@@ -43,6 +43,7 @@ const Container = styled.div`
 `
 
 const ProductCategory = () => {
+    const [value,setValue] = useState("All")
     const router = useRouter();
     const {productCategory} = router.query;
     const [currentPage, setCurrentPage] = useState(1);
@@ -54,6 +55,8 @@ const ProductCategory = () => {
     const currentProducts = products.slice(indexOfFirstProduct,indexOFLastProduct);   
     const filteredProducts = currentProducts.filter((item=>item.category.toLowerCase()===productCategory))
 
+
+
     //Change Page
     const paginate = (pageNumber)=> setCurrentPage(pageNumber)
 
@@ -63,35 +66,64 @@ const ProductCategory = () => {
         }, 0)
     },[currentPage])
 
+    useEffect(()=>{
+        setValue("All")
+    },[productCategory])
+
+
+
     //Get All the categories
     const categories = [...new Set(products.map(product=>product.category.toLowerCase()))];
-    const subCategories =  [...new Set(products.map(product=>product.subCategory))];
+    const subCategories =  [...new Set(filteredProducts.map(product=>product.subCategory))];
 
     if(!(categories.includes(`${productCategory}`.toLowerCase()))){
         return <Error404></Error404>
     }
-    
-    console.log(filteredProducts)
 
-    return (
 
-        <Section>
-            <h1>{`${productCategory}`.toUpperCase()}</h1>
-            <Filter subCategories={subCategories}></Filter>
-            <Container>
-                {filteredProducts.map((product,index)=>{
-                    return(
-                        <Link href={`/${productCategory}/${product.sku}`} passHref key={index}>
-                        <A>
-                        <Card key={index} image={product.image} price={product.price} name={product.name}></Card>
-                        </A>
-                        </Link>
-                    )
-                })}
-            </Container>
-            <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate}></Pagination>
-        </Section>
-    )
+    console.log(filteredProducts.filter(item=>item.subCategory===value))
+
+
+    if(!(value==="All")){
+        return(
+            <Section>
+                <Filter subCategories={subCategories} setValue={setValue}></Filter>
+                <Container>
+                    {(filteredProducts.filter(item=>item.subCategory===value)).map((product,index)=>{
+                        return(
+                            <Link href={`/${productCategory}/${product.sku}`} passHref key={index}>
+                            <A>
+                            <Card key={index} image={product.image} price={product.price} name={product.name}></Card>
+                            </A>
+                            </Link>
+                        )
+                    })}
+                </Container>
+            </Section>
+        )
+    }else{
+        return (
+        
+            <Section>
+                <h1>{`${productCategory}`.toUpperCase()}</h1>                
+                <Filter subCategories={subCategories} setValue={setValue}></Filter>
+                <Container>
+                    {filteredProducts.map((product,index)=>{
+                        return(
+                            <Link href={`/${productCategory}/${product.sku}`} passHref key={index}>
+                            <A>
+                            <Card key={index} image={product.image} price={product.price} name={product.name}></Card>
+                            </A>
+                            </Link>
+                        )
+                    })}
+                       
+                </Container>
+                <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate}></Pagination>
+            </Section>
+        ) 
+    }
+
 }
 
 export default ProductCategory

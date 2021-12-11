@@ -1,5 +1,6 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import styled from 'styled-components'
+import { useRouter } from 'next/router'
 
 const FilterContainer = styled.div`
     margin-top: 1rem;
@@ -30,12 +31,27 @@ const Option = styled.option`
     width: 30px;
 `
 
-const Filter = ({subCategories}) => {
+
+
+
+
+const Filter = ({subCategories,setValue}) => {
+    
+
+    // useEffect(()=>{
+    //     setValue("All")
+    // },[subCategories])
+
+     const handleChange = (e)=>{
+        //  funcPass(e.target.value)
+        setValue(e.target.value)
+    }
+    
     return (
         <FilterContainer>
             <FilterItem>
                 <a>Filter Products</a>
-                <Select>
+                <Select name="subCategory" onChange={handleChange}>
                     <Option>
                         All
                     </Option>
@@ -48,14 +64,14 @@ const Filter = ({subCategories}) => {
             </FilterItem>
             <FilterItem>
                 <a>Sort Products</a>
-                <Select>
-                    <Option>
+                <Select name="order" onChange={handleChange}>
+                    <Option value="Newest">
                         Newest
                     </Option>
-                    <Option>
+                    <Option value="asc">
                         Low to High
                     </Option>
-                    <Option>
+                    <Option value="desc">
                         High to Low
                     </Option>
                 </Select>
