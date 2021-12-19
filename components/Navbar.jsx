@@ -5,6 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import React from 'react'
 import Link from 'next/link'
 import { categories } from '../data'
+import { useSelector } from 'react-redux'
 
 import styled from 'styled-components'
 const Container = styled.div`
@@ -53,6 +54,9 @@ const MenuItem = styled.div`
 
 
 const Navbar = () => {
+    const quantity = useSelector(state=>state.cart.quantity);
+    const cart = useSelector(state => state.cart);
+    console.log(cart)
     return (
         <Container>
             <Wrapper>
@@ -72,7 +76,7 @@ const Navbar = () => {
                     </DropdownButton>
                     <MenuItem>
                     <Link href="/cart">
-                        <Badge badgeContent={4} color="secondary">
+                        <Badge badgeContent={quantity} color="secondary">
                             <ShoppingCartOutlined></ShoppingCartOutlined>
                         </Badge>
                     </Link>

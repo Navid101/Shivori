@@ -38,9 +38,6 @@ const Option = styled.option`
 const Filter = ({subCategories,setValue}) => {
     
 
-    // useEffect(()=>{
-    //     setValue("All")
-    // },[subCategories])
 
      const handleChange = (e)=>{
         //  funcPass(e.target.value)

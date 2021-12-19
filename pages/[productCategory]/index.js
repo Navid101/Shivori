@@ -81,7 +81,6 @@ const ProductCategory = () => {
     }
 
 
-    console.log(filteredProducts.filter(item=>item.subCategory===value))
 
 
     if(!(value==="All")){

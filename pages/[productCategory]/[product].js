@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
 import FilterSize from '../../components/product/FilterSize'
 import styled from 'styled-components'
 import { products } from '../../data'
 import { useRouter } from 'next/router'
+import { addProduct } from '../../redux/cartRedux'
+import { useDispatch } from 'react-redux'
 
 
 const Section = styled.div`
@@ -50,6 +52,8 @@ const SmallImage = styled.img`
     width: 125px;
     height: 200px;
     object-fit: cover;
+    cursor:pointer;
+
 `
 
 const ProductInfoContainer = styled.div`
@@ -104,9 +108,20 @@ const items = [
 
 
 const product = () => {
+
+    const dispatch = useDispatch();
+
+
+    
+
     const router = useRouter();
     const {product} = router.query
     const singleProduct = products.filter(item=>item.sku===product)
+    console.log(singleProduct)
+    const [image,setImage] = useState("")
+    const handleClick = ()=>{
+        dispatch(addProduct({singleProduct}));
+    }
     return (
         <Section>
             {singleProduct.map((item)=>{
@@ -115,21 +130,22 @@ const product = () => {
                     <ImageContainer>
                         <MainImage src={item.image}></MainImage>
                         <SmallImageContainer>
-                            <SmallImage src={item.image}></SmallImage>
-                            <SmallImage src={item.image}></SmallImage>
-                            <SmallImage src={item.image}></SmallImage>
+                            <SmallImage src={item.image} onClick={()=>setImage(item.image)}></SmallImage>
+                            <SmallImage src={item.image} onClick={()=>setImage(item.image)}></SmallImage>
+                            <SmallImage src={item.image} onClick={()=>setImage(item.image)}></SmallImage> 
                         </SmallImageContainer>
                     </ImageContainer>
                     <ProductInfoContainer>
                         <h3>{item.name}</h3>
                         <h3>TK {item.price}</h3>
+                        <h3>Fabric: {item.subCategory}</h3>
                         {singleProduct.map((item)=>{
                             if(item.size){
                                 return <FilterSize subCategories={item.size} key={item.sku}></FilterSize>
                             }
                         })}
                         <ButtonContainer>
-                            <Button>ADD TO CART</Button>
+                            <Button onClick={handleClick}>ADD TO CART</Button>
                         </ButtonContainer>
                     </ProductInfoContainer>
                 </Container>

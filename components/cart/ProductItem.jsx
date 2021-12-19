@@ -1,5 +1,7 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { removeProduct } from '../../redux/cartRedux'
 import Button from './Button'
 
 
@@ -12,6 +14,7 @@ const Container = styled.div`
    justify-items: flex-start;
    grid-template-columns: 3fr 2fr 2fr 2fr 1fr;
    padding: 10px 0;
+
 
    @media (max-width:768px){
        width: 60%;
@@ -75,22 +78,28 @@ const CrossButton = styled.button`
 
 
 
-const ProductItem = ({name,value,price,image}) => {
+const ProductItem = ({product}) => {
+    const dispatch = useDispatch()
+    const [count,setCount] = useState(1);
+    const total = product.price*count;
+    const handleClick = ()=>{
+        dispatch(removeProduct({product}))
+    }
     return (
         <Container>
             <ProductInfo>
                 <ImageContainer>
-                    <Image src={image}></Image>
+                    <Image src={product.image}></Image>
                 </ImageContainer>
                 <Info>
-                    <h4>{name}</h4>
-                    <h4>{value}</h4>
+                    <h4>{product.name}</h4>
+                    <h4>{product.size}</h4>
                 </Info>
             </ProductInfo>
-            <h4>Price: {price}</h4>
-            <Button></Button>
-            <h4>Total: {price*3}</h4>
-            <CrossButton>Remove</CrossButton>
+            <h4>Price: {product.price}</h4>
+            <Button count={count} setCount={setCount}></Button>
+            <h4>Total: {total}</h4>
+            <CrossButton onClick={handleClick}>Remove</CrossButton>
         </Container>
     )
 }

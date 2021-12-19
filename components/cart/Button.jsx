@@ -26,8 +26,7 @@ const Increament = styled.button`
     background-color: white;
 `
 
-const Button = () => {
-    const [count,setCount] = useState(1);
+const Button = ({count,setCount}) => {
     return(
         <Container>
             <h4>Quantity: </h4>

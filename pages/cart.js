@@ -1,7 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import styled from 'styled-components'
 import ProductItem from '../components/cart/ProductItem'
-import { products } from '../data'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { clearProducts, removeProduct } from '../redux/cartRedux'
+
 
 const Section = styled.div`
     padding: 7.5rem 0;
@@ -11,7 +14,7 @@ const Section = styled.div`
     justify-content: flex-start;
     row-gap: 3rem;
     margin: auto;
-
+    min-height:77vh;
 
 `
 
@@ -56,40 +59,37 @@ const Button = styled.button`
     }
 `
 
-const dumdum = [1,2]
 
-const dummyProduct = {
-    name:"Handmade Saree",
-    price:200,
-    value:"M",
-    image:"https://images.unsplash.com/photo-1615886753866-79396abc446e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
-}
 
-const dummyProduct2 = {
-    name:"Georget Saree",
-    price:200,
-    value:"M",
-    image:"https://images.unsplash.com/photo-1615886753866-79396abc446e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
-}
 
 
 
 const cart = () => {
-    const [subTotal,setSubTotal] = useState(3450)
+    const dispatch = useDispatch();
+    const products = useSelector(state => state.cart.products);
+    const total = useSelector(state => state.cart.total)
+    const [subTotal,setSubTotal] = useState([]);
+    const handleClear = ()=>{
+        dispatch(clearProducts())
+    }
+    const getTotal = (param)=>{
+        setSubTotal([...subTotal,param]);
+    }
+    console.log(products);
     return (
         <Section>
             <h1>Your Shopping Cart</h1>
             <ProductContainer>
-                {dumdum.map((dum)=>{
+                {products.map((product,index)=>{
                     return (
-                    <ProductItem name={dummyProduct.name} value={dummyProduct.value} price={dummyProduct.price} image={dummyProduct.image}></ProductItem>
+                    <ProductItem key={index} product={product}></ProductItem>
                     )
                 })}
             </ProductContainer>
             <CartTotal>
-                <h4>Subtotal: {subTotal}</h4>
+                <h4>Subtotal: {total}</h4>
                 <ButtonGroup>
-                    <Button>Empty Cart</Button>
+                    <Button onClick={handleClear}>Empty Cart</Button>
                     <Button>Checkout</Button>
                 </ButtonGroup>
             </CartTotal>
