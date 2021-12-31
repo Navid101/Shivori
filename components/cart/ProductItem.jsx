@@ -85,6 +85,7 @@ const ProductItem = ({product}) => {
     const handleClick = ()=>{
         dispatch(removeProduct({product}))
     }
+    
     return (
         <Container>
             <ProductInfo>

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ProductItem from '../components/cart/ProductItem'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { clearProducts, removeProduct } from '../redux/cartRedux'
+import { clearProducts } from '../redux/cartRedux'
 
 
 const Section = styled.div`
@@ -66,16 +66,13 @@ const Button = styled.button`
 
 const cart = () => {
     const dispatch = useDispatch();
+    const cart = useSelector(state=>state.cart)
+    const total = useSelector(state=>state.cart.total)
     const products = useSelector(state => state.cart.products);
-    const total = useSelector(state => state.cart.total)
-    const [subTotal,setSubTotal] = useState([]);
     const handleClear = ()=>{
         dispatch(clearProducts())
     }
-    const getTotal = (param)=>{
-        setSubTotal([...subTotal,param]);
-    }
-    console.log(products);
+    console.log(cart);
     return (
         <Section>
             <h1>Your Shopping Cart</h1>

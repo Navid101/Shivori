@@ -11,25 +11,26 @@ const Container = styled.div`
 `
 
 const Decreament = styled.button`
-    width: 1rem;
+    width: 2rem;
     height: 2rem;
     font-weight: bold;
-    border: none;
     background-color: white;
+    border:1px solid black;
+    border-radius: 5px;
 `
 
 const Increament = styled.button`
-    width: 1rem;
+    width: 2rem;
     height: 2rem;
     font-weight: bold;
-    border: none;
     background-color: white;
+    border:1px solid black;
+    border-radius: 5px;
 `
 
 const Button = ({count,setCount}) => {
     return(
         <Container>
-            <h4>Quantity: </h4>
             <Decreament onClick={()=>count===1?setCount(1):setCount(count-1)}>-</Decreament>
             <h4>{count}</h4>
             <Increament onClick={()=>setCount(count+1)}>+</Increament>

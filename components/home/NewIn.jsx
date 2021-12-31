@@ -16,7 +16,7 @@ const Container = styled.div`
     height: auto;
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    gap: 2rem;
+    gap: .5rem;
     margin-top: 2rem;
 
     @media (max-width:768px){
@@ -48,17 +48,21 @@ const Overlay =  styled.div`
     padding: 10px;
 `
 
+const H1 = styled.h1`
+    padding: 5rem 0;
+`
+
 const NewIn = () => {
     return (
         <Section>
-            <h1>New In</h1>
+            <H1>New In</H1>
             <Container>
                 {newIns.map((newIn)=>{
                     return(
                         <Link href={`/${newIn.name.toLowerCase()}`} key={newIn.id}>
                         <ImageContainer key={newIn.id} style={{cursor:"pointer"}}>
                             <Image src={newIn.image}></Image>
-                            <Overlay><h3>{newIn.name}</h3></Overlay>
+                            {/* <Overlay><h3>{newIn.name}</h3></Overlay> */}
                         </ImageContainer>
                         </Link>
                     )

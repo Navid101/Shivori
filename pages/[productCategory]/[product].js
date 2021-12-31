@@ -5,6 +5,7 @@ import { products } from '../../data'
 import { useRouter } from 'next/router'
 import { addProduct } from '../../redux/cartRedux'
 import { useDispatch } from 'react-redux'
+import CartButton from "./../../components/cart/Button"
 
 
 const Section = styled.div`
@@ -74,6 +75,7 @@ const ProductInfoContainer = styled.div`
 const ButtonContainer = styled.div`
     display: flex;
     align-items: center;
+    column-gap:1rem;
 `
 
 const Button = styled.button`
@@ -110,8 +112,7 @@ const items = [
 const product = () => {
 
     const dispatch = useDispatch();
-
-
+    const [count,setCount] = useState(1);
     
 
     const router = useRouter();
@@ -120,7 +121,7 @@ const product = () => {
     console.log(singleProduct)
     const [image,setImage] = useState("")
     const handleClick = ()=>{
-        dispatch(addProduct({singleProduct}));
+        dispatch(addProduct({singleProduct,count}));
     }
     return (
         <Section>
@@ -145,6 +146,7 @@ const product = () => {
                             }
                         })}
                         <ButtonContainer>
+                            <CartButton count={count} setCount={setCount}></CartButton>
                             <Button onClick={handleClick}>ADD TO CART</Button>
                         </ButtonContainer>
                     </ProductInfoContainer>

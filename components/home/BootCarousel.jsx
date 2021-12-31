@@ -7,8 +7,8 @@ import {slides} from '../../data'
 
 
 const ImageContainer = styled.div`
-    height: 100%;
-    width: 100%;
+    height: 94vh;
+    width: auto;
 `
 
 const Image =  styled.img`
