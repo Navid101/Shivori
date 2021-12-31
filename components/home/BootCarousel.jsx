@@ -9,6 +9,10 @@ import {slides} from '../../data'
 const ImageContainer = styled.div`
     height: 94vh;
     width: auto;
+    @media (max-width:768px){
+        height:100%;
+        width:100%;
+    }
 `
 
 const Image =  styled.img`
