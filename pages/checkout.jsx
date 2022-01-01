@@ -18,6 +18,10 @@ const Wrapper = styled.div`
     width:90%;
     margin:auto;
     margin-top:3rem;
+    @media (max-width:768px){
+        display:flex;
+        flex-direction:column-reverse;
+    }
 `
 
 
