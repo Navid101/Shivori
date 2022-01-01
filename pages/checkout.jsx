@@ -21,6 +21,7 @@ const Wrapper = styled.div`
     @media (max-width:768px){
         display:flex;
         flex-direction:column;
+        row-gap:3rem;
     }
 `
 
@@ -82,7 +83,7 @@ const checkout = () => {
                 <Label htmlFor="">Name</Label>
                 <Input type="text" placeholder='Enter Name'/>
                 <Label htmlFor="">Address</Label>
-                <Input type="text" autoFocus placeholder='Enter Address'/>
+                <Input type="text" placeholder='Enter Address'/>
                 <Label htmlFor="">Phone</Label>
                 <Input type="text" placeholder='Enter Phone Number'/>
                 <Label htmlFor="">Email</Label>
