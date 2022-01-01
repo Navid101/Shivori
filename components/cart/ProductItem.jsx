@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { removeProduct } from '../../redux/cartRedux'
+import { removeProduct, updateQuantity } from '../../redux/cartRedux'
 import Button from './Button'
 
 
@@ -80,11 +80,14 @@ const CrossButton = styled.button`
 
 const ProductItem = ({product}) => {
     const dispatch = useDispatch()
-    const [count,setCount] = useState(1);
+    const [count,setCount] = useState(product.quantity);
     const total = product.price*count;
     const handleClick = ()=>{
         dispatch(removeProduct({product}))
     }
+    useEffect(()=>{
+        dispatch(updateQuantity({product,count}))
+    },[count])
     
     return (
         <Container>

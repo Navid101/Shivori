@@ -21,9 +21,15 @@ const cartSlice = createSlice({
         removeProduct:(state,action)=>{
             state.products = state.products.filter((item)=>item.sku!==action.payload.product.sku);
             state.quantity -=1;
+            state.total -= action.payload.product.price*action.payload.product.quantity;
+        },
+        updateQuantity:(state,action)=>{
+            state.products.filter((item)=>item.sku===action.payload.product.sku)[0].quantity=action.payload.count;
+            state.total = state.products.reduce((prev,cur)=>prev+(cur.price*cur.quantity),0);
         }
+        
     }
 })
 
-export const {addProduct, clearProducts,removeProduct} = cartSlice.actions
+export const {addProduct, clearProducts,removeProduct,updateQuantity} = cartSlice.actions
 export default cartSlice.reducer;
