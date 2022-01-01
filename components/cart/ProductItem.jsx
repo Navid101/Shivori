@@ -22,7 +22,7 @@ const Container = styled.div`
        align-items: flex-start;
        justify-content: center;
        flex-direction:column;
-       row-gap: 5px;
+       row-gap: 20px;
        padding: 20px 0;
    }
 `
@@ -58,7 +58,6 @@ const Info = styled.div`
 
     @media (max-width:768px){
         flex-direction: column;
-        row-gap:1rem;
     }
 
 
