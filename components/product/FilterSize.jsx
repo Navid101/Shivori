@@ -32,15 +32,15 @@ const Option = styled.option`
     width: 30px;
 `
 
-const FilterSize = ({subCategories}) => {
+const FilterSize = ({sizes}) => {
     return (
         <FilterContainer>
             <FilterItem>
                 <FilterText>Select Size</FilterText>
                 <Select>
-                    {subCategories.map((subCategory,index)=>{
+                    {sizes.split(",").map((size,index)=>{
                         return(
-                            <Option key={index}>{subCategory}</Option>
+                            <Option key={index}>{size}</Option>
                         )
                     })}
                 </Select>

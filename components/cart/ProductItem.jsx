@@ -93,7 +93,7 @@ const ProductItem = ({product}) => {
         <Container>
             <ProductInfo>
                 <ImageContainer>
-                    <Image src={product.image}></Image>
+                    <Image src={product.image1}></Image>
                 </ImageContainer>
                 <Info>
                     <h4>{product.name}</h4>

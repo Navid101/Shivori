@@ -107,9 +107,22 @@ const items = [
     }
 ]
 
+export async function getServerSideProps() {
+    const res = await fetch("https://shivoriadmin.vercel.app/api/products")
+    const data = await res.json()
+  
+    if (!data) {
+      return {
+        notFound: true,
+      }
+    }
+  
+    return {
+      props: {products:data.data}, // will be passed to the page component as props
+    }
+  }
 
-
-const product = () => {
+const product = ({products}) => {
 
     const dispatch = useDispatch();
     const [count,setCount] = useState(1);
@@ -117,9 +130,10 @@ const product = () => {
 
     const router = useRouter();
     const {product} = router.query
+    console.log(product)
     const singleProduct = products.filter(item=>item.sku===product)
     console.log(singleProduct)
-    const [image,setImage] = useState("")
+    const [image,setImage] = useState(singleProduct[0].image1);
     const handleClick = ()=>{
         dispatch(addProduct({singleProduct,count}));
         setTimeout(() => {
@@ -132,11 +146,11 @@ const product = () => {
                 return(
                     <Container key={item.sku}>
                     <ImageContainer>
-                        <MainImage src={item.image}></MainImage>
+                        <MainImage src={image}></MainImage>
                         <SmallImageContainer>
-                            <SmallImage src={item.image} onClick={()=>setImage(item.image)}></SmallImage>
-                            <SmallImage src={item.image} onClick={()=>setImage(item.image)}></SmallImage>
-                            <SmallImage src={item.image} onClick={()=>setImage(item.image)}></SmallImage> 
+                            <SmallImage src={item.image1} onClick={()=>setImage(item.image1)}></SmallImage>
+                            <SmallImage src={item.image2} onClick={()=>setImage(item.image2)}></SmallImage>
+                            <SmallImage src={item.image3} onClick={()=>setImage(item.image3)}></SmallImage> 
                         </SmallImageContainer>
                     </ImageContainer>
                     <ProductInfoContainer>
@@ -145,7 +159,7 @@ const product = () => {
                         <h3>Fabric: {item.subCategory}</h3>
                         {singleProduct.map((item)=>{
                             if(item.size){
-                                return <FilterSize subCategories={item.size} key={item.sku}></FilterSize>
+                                return <FilterSize sizes={item.size} key={item.sku}></FilterSize>
                             }
                         })}
                         <ButtonContainer>

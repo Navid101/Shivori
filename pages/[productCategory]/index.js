@@ -1,12 +1,13 @@
 import React, {useState,useEffect} from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { products } from '../../data'
+// import { products } from '../../data'
 import Card from '../../components/productCategory/Card'
 import Pagination from '../../components/productCategory/Pagination'
 import Filter from '../../components/productCategory/Filter'
 import Error404 from '../../components/Error404'
 import Link from 'next/link'
+import axios from 'axios'
 
 const Section = styled.div`
     padding-top: 1rem;
@@ -42,14 +43,32 @@ const Container = styled.div`
     }
 `
 
-const ProductCategory = () => {
+export async function getServerSideProps() {
+    const res = await fetch("https://shivoriadmin.vercel.app/api/products")
+    const data = await res.json()
+  
+    if (!data) {
+      return {
+        notFound: true,
+      }
+    }
+  
+    return {
+      props: {products:data.data}, // will be passed to the page component as props
+    }
+  }
+
+const ProductCategory = ({products}) => {
     const [value,setValue] = useState("All")
     const router = useRouter();
     const {productCategory} = router.query;
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 12;
 
-    //Get Current Producsts
+    console.log(products)
+
+    
+    //Get Current Products
     const indexOFLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOFLastProduct - productsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct,indexOFLastProduct);   
@@ -93,7 +112,7 @@ const ProductCategory = () => {
                         return(
                             <Link href={`/${productCategory}/${product.sku}`} passHref key={index}>
                             <A>
-                            <Card key={index} image={product.image} price={product.price} name={product.name}></Card>
+                            <Card key={index} image={product.image1} price={product.price} name={product.name}></Card>
                             </A>
                             </Link>
                         )
@@ -112,7 +131,7 @@ const ProductCategory = () => {
                         return(
                             <Link href={`/${productCategory}/${product.sku}`} passHref key={index}>
                             <A>
-                            <Card key={index} image={product.image} price={product.price} name={product.name}></Card>
+                            <Card key={index} image={product.image1} price={product.price} name={product.name}></Card>
                             </A>
                             </Link>
                         )
@@ -127,3 +146,4 @@ const ProductCategory = () => {
 }
 
 export default ProductCategory
+

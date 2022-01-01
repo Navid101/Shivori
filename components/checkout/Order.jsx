@@ -40,7 +40,7 @@ const Order = () => {
             {products.map((product,index)=>{
                 return (
                 <Item key={index}>
-                    <Image src={product.image}></Image>
+                    <Image src={product.image1}></Image>
                     <h3 style={{maxWidth:'170px'}}>{product.name}</h3>
                     <h3>x{product.quantity}</h3>
                     <h3>{product.quantity*product.price}</h3>
