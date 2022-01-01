@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     margin-top:3rem;
     @media (max-width:768px){
         display:flex;
-        flex-direction:column-reverse;
+        flex-direction:column;
     }
 `
 
