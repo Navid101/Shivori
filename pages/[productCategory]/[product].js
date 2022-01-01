@@ -122,6 +122,9 @@ const product = () => {
     const [image,setImage] = useState("")
     const handleClick = ()=>{
         dispatch(addProduct({singleProduct,count}));
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }, 0)
     }
     return (
         <Section>

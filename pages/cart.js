@@ -4,6 +4,7 @@ import ProductItem from '../components/cart/ProductItem'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { clearProducts } from '../redux/cartRedux'
+import Link from 'next/dist/client/link'
 
 
 const Section = styled.div`
@@ -57,6 +58,7 @@ const Button = styled.button`
         color: white;
         transition: all .3s ease;
     }
+    
 `
 
 
@@ -73,26 +75,38 @@ const cart = () => {
         dispatch(clearProducts())
     }
     console.log(cart);
-    return (
-        <Section>
-            <h1>Your Shopping Cart</h1>
-            <ProductContainer>
-                {products.map((product,index)=>{
-                    return (
-                    <ProductItem key={index} product={product}></ProductItem>
-                    )
-                })}
-            </ProductContainer>
-            <CartTotal>
-                <h4>Subtotal: {total}</h4>
-                <ButtonGroup>
-                    <Button onClick={handleClear}>Empty Cart</Button>
-                    <Button>Checkout</Button>
-                </ButtonGroup>
-            </CartTotal>
-
-        </Section>
-    )
+    if(total){
+        return (
+            <Section>
+                <h1>Your Shopping Cart</h1>
+                <ProductContainer>
+                    {products.map((product,index)=>{
+                        return (
+                        <ProductItem key={index} product={product}></ProductItem>
+                        )
+                    })}
+                </ProductContainer>
+                <CartTotal>
+                    <h4>Subtotal: {total}</h4>
+                    <ButtonGroup>
+                        <Button onClick={handleClear}>Empty Cart</Button>
+                        <Link href="/checkout">
+                        <Button>Checkout</Button>
+                        </Link>
+                    </ButtonGroup>
+                </CartTotal>
+    
+            </Section>
+        )
+    }else{
+        return(
+            <Section>
+                <h1>Your shopping cart is empty!</h1>
+                <h1>Add some items maybe?</h1>
+            </Section>
+            
+        )
+    }
 }
 
 export default cart
