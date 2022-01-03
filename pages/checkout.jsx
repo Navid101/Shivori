@@ -1,6 +1,7 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components'
 import Order from '../components/checkout/Order'
+import { useSelector } from 'react-redux'
 
 
 const Section = styled.section`
@@ -73,28 +74,60 @@ const Button = styled.button`
 `
 
 const checkout = () => {
+    const items = useSelector(state => state.cart.products)
+    const products = items.map(item=>{
+        return (
+            {
+                id:item._id,
+                price:item.price,
+                quantity:item.quantity,
+                sku:item.sku,
+                image:item.image1
+            }
+        )
+    })
+    const total = useSelector(state=>state.cart.total)
+    const [order, setOrder] = useState({
+        name:'',
+        address:'',
+        phone:'',
+        email:'',
+        products,
+        total
+    })
+
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        console.log(order)
+    }
+    const handleChange = (e)=>{
+        setOrder({
+            ...order,
+            [e.target.name]:e.target.value
+        })
+    }
     return (
         <Section>
         <Wrapper>
             <Container>
             <h3>Billing Details</h3>
             <Border></Border>
-            <Form>
+            <Form >
                 <Label htmlFor="">Name</Label>
-                <Input type="text" placeholder='Enter Name'/>
+                <Input type="text" placeholder='Enter Name' name='name' onChange={handleChange}/>
                 <Label htmlFor="">Address</Label>
-                <Input type="text" placeholder='Enter Address'/>
+                <Input type="text" placeholder='Enter Address' name= "address" onChange={handleChange}/>
                 <Label htmlFor="">Phone</Label>
-                <Input type="text" placeholder='Enter Phone Number'/>
+                <Input type="text" placeholder='Enter Phone Number' name='phone' onChange={handleChange}/>
                 <Label htmlFor="">Email</Label>
-                <Input type="text" placeholder='Enter Email'/>
+                <Input type="text" placeholder='Enter Email' name='email' onChange={handleChange}/>
             </Form>
             </Container>
             <Container>
             <h3>Your Order</h3>
             <Border style={{width:'100%'}}></Border>
             <Order></Order>
-            <Button>Place Order</Button>
+            <Button onClick={handleSubmit}>Place Order</Button>
             </Container>
         </Wrapper>
         </Section>

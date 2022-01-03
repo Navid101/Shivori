@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/dist/client/image'
 
 
 const Container = styled.div`
@@ -11,17 +12,15 @@ const Container = styled.div`
 const ImageContainer = styled.div`
     height: 360px;
     width: 285px;
+    position:relative;
+    cursor:pointer;
     @media (max-width:768px){
         height: auto;
         width: auto;
     }
 `
 
-const Image = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-`
+
 const Text = styled.h4`
     color: black;
     font-size: 16px;
@@ -34,7 +33,7 @@ const Card = ({image, name, price}) => {
     return (
         <Container >
             <ImageContainer>
-                <Image src={image}/>
+                <Image src={image} layout='fill' objectFit='cover'/>
             </ImageContainer>
             <Text>{name}</Text>
             <Text>{`TK ${price}`}</Text>

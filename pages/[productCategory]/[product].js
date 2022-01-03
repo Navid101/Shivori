@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { addProduct } from '../../redux/cartRedux'
 import { useDispatch } from 'react-redux'
 import CartButton from "./../../components/cart/Button"
+import Image from 'next/image'
 
 
 const Section = styled.div`
@@ -36,10 +37,11 @@ const ImageContainer = styled.div`
     flex-direction: column;
 `
 
-const MainImage = styled.img`
-    width: 400px;
-    height: 560px;
-    object-fit: cover;
+const MainImage = styled.div`
+    width: 500px;
+    height: 750px;
+    position: relative;
+    
 `
 
 const SmallImageContainer = styled.div`
@@ -49,10 +51,10 @@ const SmallImageContainer = styled.div`
     padding-top: 1rem;
 `
 
-const SmallImage = styled.img`
+const SmallImage = styled.div`
     width: 125px;
     height: 200px;
-    object-fit: cover;
+    position: relative;
     cursor:pointer;
 
 `
@@ -146,11 +148,13 @@ const product = ({products}) => {
                 return(
                     <Container key={item.sku}>
                     <ImageContainer>
-                        <MainImage src={image}></MainImage>
+                        <MainImage>
+                            <Image src={image} layout='fill' objectFit='cover'></Image>
+                        </MainImage>
                         <SmallImageContainer>
-                            <SmallImage src={item.image1} onClick={()=>setImage(item.image1)}></SmallImage>
-                            <SmallImage src={item.image2} onClick={()=>setImage(item.image2)}></SmallImage>
-                            <SmallImage src={item.image3} onClick={()=>setImage(item.image3)}></SmallImage> 
+                            <SmallImage><Image src={item.image1} onClick={()=>setImage(item.image1)} layout='fill' objectFit='cover'></Image></SmallImage>
+                            <SmallImage><Image src={item.image2} onClick={()=>setImage(item.image2)} layout='fill' objectFit='cover'></Image></SmallImage>
+                            <SmallImage><Image src={item.image3} onClick={()=>setImage(item.image3)} layout='fill' objectFit='cover'></Image></SmallImage>              
                         </SmallImageContainer>
                     </ImageContainer>
                     <ProductInfoContainer>
@@ -163,7 +167,7 @@ const product = ({products}) => {
                             }
                         })}
                         <ButtonContainer>
-                            <CartButton count={count} setCount={setCount}></CartButton>
+                            {/* <CartButton count={count} setCount={setCount}></CartButton> */}
                             <Button onClick={handleClick}>ADD TO CART</Button>
                         </ButtonContainer>
                     </ProductInfoContainer>
