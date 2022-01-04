@@ -43,7 +43,7 @@ const Container = styled.div`
     }
 `
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const res = await fetch("https://shivoriadmin.vercel.app/api/products")
     const data = await res.json()
   
@@ -54,7 +54,8 @@ export async function getServerSideProps() {
     }
   
     return {
-      props: {products:data.data}, // will be passed to the page component as props
+      props: {products:data.data},
+      revalidate:60 // will be passed to the page component as props
     }
   }
 
