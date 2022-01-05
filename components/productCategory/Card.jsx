@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import Image from 'next/dist/client/image'
+
 
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content:center;
+    align-items:center;
     row-gap: 1rem;
 `
 
@@ -16,10 +18,14 @@ const ImageContainer = styled.div`
     cursor:pointer;
     @media (max-width:768px){
         height: auto;
-        width: auto;
+        width: 100%;
     }
 `
-
+const Image = styled.img`
+    height:100%;
+    width:100%;
+    object-fit:contain;
+`
 
 const Text = styled.h4`
     color: black;
@@ -33,7 +39,7 @@ const Card = ({image, name, price}) => {
     return (
         <Container >
             <ImageContainer>
-                <Image src={image} layout='fill' objectFit='cover'/>
+                <Image src={image}/>
             </ImageContainer>
             <Text>{name}</Text>
             <Text>{`TK ${price}`}</Text>

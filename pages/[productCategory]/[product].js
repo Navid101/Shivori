@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { addProduct } from '../../redux/cartRedux'
 import { useDispatch } from 'react-redux'
 import CartButton from "./../../components/cart/Button"
-import Image from 'next/image'
+
 
 
 const Section = styled.div`
@@ -18,7 +18,7 @@ const Section = styled.div`
 `
 
 const Container = styled.div`
-    position: relative;
+    
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -28,33 +28,40 @@ const Container = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 0;
     }
     
 `
 
-const ImageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-`
 
 const MainImage = styled.div`
-    width: 500px;
-    height: 750px;
-    position: relative;
-    
+    width: 600px;
+    height:auto;
+    @media (max-width:768px){
+        height: auto;
+        width: 100%;
+    }
+         
 `
 
 const SmallImageContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 1rem;
+    flex-direction:column;
+    justify-content: flex-start;
+    row-gap:1rem;
+    @media (max-width:768px){
+        flex-direction:row;
+        justify-content: space-between;
+        column-gap:1rem;
+        width: 100%;
+        
+    } 
 `
 
 const SmallImage = styled.div`
     width: 125px;
     height: 200px;
-    position: relative;
     cursor:pointer;
 
 `
@@ -70,6 +77,7 @@ const ProductInfoContainer = styled.div`
     @media (max-width:768px){
         width: 100%;
         align-items: flex-start;
+        padding-top:2rem;
     }
 
 `
@@ -88,26 +96,14 @@ const Button = styled.button`
 
 `
 
+const Image = styled.img`
+    height: 100%;
+    width: 100%;
+    object-fit:contain;
+`
 
-const items = [
-    {
-        id:1,
-        name:"Handloomed Saree",
-        image:"/assets/webp/2.webp",
-        category:"Saree",
-        subcategory:"Silk",
-        price:"200"
-    },
-    {
-        id:2,
-        name:"Pant",
-        image: "/assets/webp/3.webp",
-        category:"Saree",
-        subcategory:"Silk",
-        size:["S","M","L","XL"],
-        price:"200"
-    }
-]
+
+
 
 export async function getServerSideProps() {
     const res = await fetch("https://shivoriadmin.vercel.app/api/products")
@@ -146,17 +142,16 @@ const product = ({products}) => {
         <Section>
             {singleProduct.map((item)=>{
                 return(
-                    <Container key={item.sku}>
-                    <ImageContainer>
-                        <MainImage>
-                            <Image src={image} layout='fill' objectFit='cover'></Image>
-                        </MainImage>
-                        <SmallImageContainer>
-                            <SmallImage><Image src={item.image1} onClick={()=>setImage(item.image1)} layout='fill' objectFit='cover'></Image></SmallImage>
-                            <SmallImage><Image src={item.image2} onClick={()=>setImage(item.image2)} layout='fill' objectFit='cover'></Image></SmallImage>
-                            <SmallImage><Image src={item.image3} onClick={()=>setImage(item.image3)} layout='fill' objectFit='cover'></Image></SmallImage>              
-                        </SmallImageContainer>
-                    </ImageContainer>
+                <Container key={item.sku}>
+                    <SmallImageContainer>
+                            <SmallImage><Image src={item.image1} onClick={()=>setImage(item.image1)} ></Image></SmallImage>
+                            <SmallImage><Image src={item.image2} onClick={()=>setImage(item.image2)} ></Image></SmallImage>
+                            <SmallImage><Image src={item.image3} onClick={()=>setImage(item.image3)} ></Image></SmallImage>              
+                    </SmallImageContainer>
+                    <MainImage>
+                            <Image src={image}></Image>
+                    </MainImage>
+                        
                     <ProductInfoContainer>
                         <h3>{item.name}</h3>
                         <h3>TK {item.price}</h3>

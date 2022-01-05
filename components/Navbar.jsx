@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 
 import styled from 'styled-components'
 const Container = styled.div`
+    width:100%;
     height:60px;
     display: flex;
     align-items: center;
@@ -63,7 +64,7 @@ const Right = styled.div`
 const MenuItem = styled.div`
     font-size: 20px;
     cursor: pointer;
-    padding: 0 10px;
+    
 `
 
 const Hide = styled.div`
