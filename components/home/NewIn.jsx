@@ -55,7 +55,7 @@ const H1 = styled.h1`
 const NewIn = () => {
     return (
         <Section>
-            <H1>New In</H1>
+            {/* <H1>New In</H1> */}
             <Container>
                 {newIns.map((newIn)=>{
                     return(

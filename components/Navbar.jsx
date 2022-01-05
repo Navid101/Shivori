@@ -8,6 +8,7 @@ import { categories } from '../data'
 import { useSelector } from 'react-redux'
 
 
+
 import styled from 'styled-components'
 const Container = styled.div`
     height:60px;
@@ -19,6 +20,9 @@ const Container = styled.div`
     z-index:2;
     background-color:white;
     padding:50px 0;
+    @media (max-width:768px){
+        padding:70px 0;
+    }
 `
 
 const Wrapper = styled.div`
@@ -27,7 +31,10 @@ const Wrapper = styled.div`
     grid-template-columns:repeat(3,1fr);
     align-items: center;
     width: 93%;
-
+    @media (max-width:768px){
+        display:flex;
+        flex-direction:column;
+    }
 `
 
 
@@ -46,6 +53,10 @@ const Right = styled.div`
     align-items: center;
     justify-content:flex-end;
     column-gap:3rem;
+    @media (max-width:768px){
+        padding-top:10px;
+        justify-content:center;
+    }
     
 `
 
@@ -55,13 +66,26 @@ const MenuItem = styled.div`
     padding: 0 10px;
 `
 
+const Hide = styled.div`
+    @media (max-width:768px){
+        display:none;
+    }
+`
+
+const Show = styled.div`
+    display:none;
+    @media (max-width:768px){
+        display:inline-block;
+    }
+`
+
 
 const Navbar = () => {
     const quantity = useSelector(state=>state.cart.quantity);
     return (
         <Container>
             <Wrapper>
-                <Link href="/search" passHref><Search style={{cursor:'pointer'}}></Search></Link>
+                <Hide><Link href="/search" passHref><Search style={{cursor:'pointer'}}></Search></Link></Hide>
                 <Link href="/" passHref>
                     <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
                     <Logo src="/assets/logo.png"></Logo>
@@ -79,6 +103,7 @@ const Navbar = () => {
                             )
                         })}
                     </DropdownButton>
+                    <Show><Link href="/search" passHref><Search style={{cursor:'pointer'}}></Search></Link></Show>
                     <MenuItem>
                     <Link href="/cart">
                         <Badge badgeContent={quantity} color="secondary">

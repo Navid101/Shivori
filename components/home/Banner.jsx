@@ -10,7 +10,7 @@ const Section = styled.section`
 
 const Container = styled.div`
     width:90%;
-    height:600px;
+    /* height:600px; */
     background-color:red;
     margin-top:.5rem;
 `
