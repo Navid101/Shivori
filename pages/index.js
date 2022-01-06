@@ -1,10 +1,13 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Banner from '../components/home/Banner'
 import BootCarousel from './../components/home/BootCarousel'
 import Categories from './../components/home/Categories'
 import NewIn from './../components/home/NewIn'
+import { dummies } from '../data'
 
 const Home = () => {
+
+  
   return (
     <div>
       <BootCarousel></BootCarousel>

@@ -156,3 +156,5 @@ export const products = [
         image: "https://shivoribd.vercel.app/_next/image?url=%2Fassets%2Fwebp%2F2.webp&w=384&q=75"
     }
 ]
+
+export const dummies = []

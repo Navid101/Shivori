@@ -44,8 +44,19 @@ const Container = styled.div`
 `
 
 
+export const getStaticPaths = async ()=>{
+    const res = await fetch("https://shivoriadmin.vercel.app/api/products")
+    const {data} = await res.json()
+    const paths = data.map((path=>({params:{productCategory:path.category.toLowerCase()}})))
+    return{
+        paths,
+        fallback:'blocking'
+    }
 
-export async function getServerSideProps() {
+}
+
+export async function getStaticProps(context) {
+    console.log(context)
     const res = await fetch("https://shivoriadmin.vercel.app/api/products")
     const data = await res.json()
   
@@ -57,6 +68,7 @@ export async function getServerSideProps() {
   
     return {
       props: {products:data.data},
+      revalidate:1
       // will be passed to the page component as props
     }
   }
