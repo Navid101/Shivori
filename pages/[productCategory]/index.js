@@ -56,7 +56,6 @@ export const getStaticPaths = async ()=>{
 }
 
 export async function getStaticProps(context) {
-    console.log(context)
     const res = await fetch("https://shivoriadmin.vercel.app/api/products")
     const data = await res.json()
   
@@ -80,7 +79,6 @@ const ProductCategory = ({products}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 12;
 
-    console.log(products)
 
     
     //Get Current Products

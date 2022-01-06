@@ -92,6 +92,7 @@ const Button = styled.button`
     background-color: rgba(0,89,76,1);
     color: white;
     padding: .5rem;
+    transition:all 0.3s ease-in;
 
 `
 
@@ -133,15 +134,16 @@ const product = ({products}) => {
 
     const dispatch = useDispatch();
     const [count,setCount] = useState(1);
-    
+    const [add,setAdd] = useState(false);
 
     const router = useRouter();
     const {product} = router.query
-    console.log(product)
+
     const singleProduct = products.filter(item=>item.sku===product)
-    console.log(singleProduct)
+
     const [image,setImage] = useState(singleProduct[0].image1);
     const handleClick = ()=>{
+        setAdd(true)
         dispatch(addProduct({singleProduct,count}));
         setTimeout(() => {
             window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -163,8 +165,9 @@ const product = ({products}) => {
                         
                     <ProductInfoContainer>
                         <h3>{item.name}</h3>
-                        <h3>TK {item.price}</h3>
+                        <h3>TK: {item.price}</h3>
                         <h3>Fabric: {item.subCategory}</h3>
+                        <h3>Desc: {item.desc}</h3>
                         {singleProduct.map((item)=>{
                             if(item.size){
                                 return <FilterSize sizes={item.size} key={item.sku}></FilterSize>
@@ -172,7 +175,7 @@ const product = ({products}) => {
                         })}
                         <ButtonContainer>
                             {/* <CartButton count={count} setCount={setCount}></CartButton> */}
-                            <Button onClick={handleClick}>ADD TO CART</Button>
+                            {!add? <Button onClick={handleClick}>ADD TO CART</Button>: <Button style={{opacity:0.8}}>ADDED TO CART</Button>}
                         </ButtonContainer>
                     </ProductInfoContainer>
                 </Container>
