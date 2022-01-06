@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import FilterSize from '../../components/product/FilterSize'
 import styled from 'styled-components'
-import { products } from '../../data'
 import { useRouter } from 'next/router'
 import { addProduct } from '../../redux/cartRedux'
 import { useDispatch } from 'react-redux'
@@ -102,10 +101,19 @@ const Image = styled.img`
     object-fit:contain;
 `
 
+export const getStaticPaths = async ()=>{
+    const res = await fetch("https://shivoriadmin.vercel.app/api/products")
+    const {data} = await res.json()
+    const paths = data.map((path=>({params:{productCategory:path.category.toLowerCase(),product:path.sku}})))
+    return{
+        paths,
+        fallback:'blocking'
+    }
+
+}
 
 
-
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const res = await fetch("https://shivoriadmin.vercel.app/api/products")
     const data = await res.json()
   
@@ -116,7 +124,8 @@ export async function getServerSideProps() {
     }
   
     return {
-      props: {products:data.data}, // will be passed to the page component as props
+      props: {products:data.data},
+      revalidate:1 // will be passed to the page component as props
     }
   }
 
