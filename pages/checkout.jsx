@@ -2,6 +2,10 @@ import React,{useState} from 'react'
 import styled from 'styled-components'
 import Order from '../components/checkout/Order'
 import { useSelector } from 'react-redux'
+import axios from 'axios'
+import { useRouter } from 'next/dist/client/router'
+import { useDispatch } from 'react-redux'
+import { clearProducts } from '../redux/cartRedux'
 
 
 const Section = styled.section`
@@ -74,6 +78,8 @@ const Button = styled.button`
 `
 
 const checkout = () => {
+    const dispatch = useDispatch();
+    const [flag,setFlag] = useState(true);
     const items = useSelector(state => state.cart.products)
     const products = items.map(item=>{
         return (
@@ -93,12 +99,13 @@ const checkout = () => {
         phone:'',
         email:'',
         products,
-        total
+        subTotal:total
     })
 
     const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(order)
+        CreateOrder()
     }
     const handleChange = (e)=>{
         setOrder({
@@ -106,32 +113,54 @@ const checkout = () => {
             [e.target.name]:e.target.value
         })
     }
-    return (
-        <Section>
-        <Wrapper>
-            <Container>
-            <h3>Billing Details</h3>
-            <Border></Border>
-            <Form >
-                <Label htmlFor="">Name</Label>
-                <Input type="text" placeholder='Enter Name' name='name' onChange={handleChange}/>
-                <Label htmlFor="">Address</Label>
-                <Input type="text" placeholder='Enter Address' name= "address" onChange={handleChange}/>
-                <Label htmlFor="">Phone</Label>
-                <Input type="text" placeholder='Enter Phone Number' name='phone' onChange={handleChange}/>
-                <Label htmlFor="">Email</Label>
-                <Input type="text" placeholder='Enter Email' name='email' onChange={handleChange}/>
-            </Form>
-            </Container>
-            <Container>
-            <h3>Your Order</h3>
-            <Border style={{width:'100%'}}></Border>
-            <Order></Order>
-            <Button onClick={handleSubmit}>Place Order</Button>
-            </Container>
-        </Wrapper>
-        </Section>
-    )
+    const CreateOrder = async()=>{
+        try {
+            const res = await axios.post(`https://shivoriadmin.vercel.app/api/orders`,order);
+            console.log(JSON.stringify(order));
+            setFlag(false)
+            dispatch(clearProducts())
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+    if(flag){
+        return (
+            <Section>
+            <Wrapper>
+                <Container>
+                <h3>Billing Details</h3>
+                <Border></Border>
+                <Form >
+                    <Label htmlFor="">Name</Label>
+                    <Input type="text" placeholder='Enter Name' name='name' onChange={handleChange}/>
+                    <Label htmlFor="">Address</Label>
+                    <Input type="text" placeholder='Enter Address' name= "address" onChange={handleChange}/>
+                    <Label htmlFor="">Phone</Label>
+                    <Input type="text" placeholder='Enter Phone Number' name='phone' onChange={handleChange}/>
+                    <Label htmlFor="">Email</Label>
+                    <Input type="text" placeholder='Enter Email' name='email' onChange={handleChange}/>
+                </Form>
+                </Container>
+                <Container>
+                <h3>Your Order</h3>
+                <Border style={{width:'100%'}}></Border>
+                <Order></Order>
+                <Button onClick={handleSubmit}>Place Order</Button>
+                </Container>
+            </Wrapper>
+            </Section>
+        )
+    }else{
+        return (
+            <Section>
+            <div style={{display:'flex',alignItems:'center',justifyContent:'center',width:'90%',height:'auto',flexDirection:'column'}}>
+                <h3>Your order has been placed!</h3>
+                <h3>Thank you for shopping with us</h3>
+            </div>
+            </Section>
+        )
+    }
 }
 
 export default checkout
