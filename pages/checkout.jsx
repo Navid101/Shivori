@@ -120,6 +120,7 @@ const checkout = () => {
             setFlag(false)
             dispatch(clearProducts())
         } catch (error) {
+            alert("Something went wrong. Please fill out the fields in billing details carefully")
             console.log(error);
         }
 
