@@ -98,7 +98,7 @@ const checkout = () => {
         address:'',
         phone:'',
         email:'',
-        status:"Pending",
+        status:'',
         products,
         subTotal:total
     })
@@ -111,6 +111,7 @@ const checkout = () => {
     const handleChange = (e)=>{
         setOrder({
             ...order,
+            status:"Pending",
             [e.target.name]:e.target.value
         })
     }
