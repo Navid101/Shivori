@@ -98,6 +98,7 @@ const checkout = () => {
         address:'',
         phone:'',
         email:'',
+        status:'pending',
         products,
         subTotal:total
     })
