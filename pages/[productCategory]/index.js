@@ -74,6 +74,7 @@ export async function getStaticProps(context) {
 
 const ProductCategory = ({products}) => {
     const [value,setValue] = useState("All")
+    const [sort,setSort] = useState("Newest")
     const router = useRouter();
     const {productCategory} = router.query;
     const [currentPage, setCurrentPage] = useState(1);
@@ -86,7 +87,7 @@ const ProductCategory = ({products}) => {
     const indexOfFirstProduct = indexOFLastProduct - productsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct,indexOFLastProduct);   
     const filteredProducts = currentProducts.filter((item=>item.category.toLowerCase()===productCategory))
-
+    
 
 
     //Change Page
@@ -113,13 +114,21 @@ const ProductCategory = ({products}) => {
     }
 
 
+    if(sort==="asc"){
+        filteredProducts.sort((a,b)=>a.price>b.price?1:-1)
+    }else if(sort==="desc"){
+        filteredProducts.sort((a,b)=>a.price<b.price?1:-1)
+
+    }else if(sort==="Newest"){
+        filteredProducts.reverse()
+    }
 
 
     if(!(value==="All")){
         return(
             <Section>
                 <h1>{`${productCategory}`.toUpperCase()}</h1>   
-                <Filter subCategories={subCategories} setValue={setValue}></Filter>
+                <Filter subCategories={subCategories} setValue={setValue} setSort={setSort}></Filter>
                 <Container>
                     {(filteredProducts.filter(item=>item.subCategory===value)).map((product,index)=>{
                         return(
@@ -138,7 +147,7 @@ const ProductCategory = ({products}) => {
         
             <Section>
                 <h1>{`${productCategory}`.toUpperCase()}</h1>                
-                <Filter subCategories={subCategories} setValue={setValue}></Filter>
+                <Filter subCategories={subCategories} setValue={setValue} setSort={setSort}></Filter>
                 <Container>
                     {filteredProducts.map((product,index)=>{
                         return(

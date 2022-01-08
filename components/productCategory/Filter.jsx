@@ -35,20 +35,17 @@ const Option = styled.option`
 
 
 
-const Filter = ({subCategories,setValue}) => {
+const Filter = ({subCategories,setValue,setSort}) => {
     
 
 
-     const handleChange = (e)=>{
-        //  funcPass(e.target.value)
-        setValue(e.target.value)
-    }
+    
     
     return (
         <FilterContainer>
             <FilterItem>
                 <a>Filter Products</a>
-                <Select name="subCategory" onChange={handleChange}>
+                <Select name="subCategory" onChange={(e)=>setValue(e.target.value)}>
                     <Option>
                         All
                     </Option>
@@ -61,7 +58,7 @@ const Filter = ({subCategories,setValue}) => {
             </FilterItem>
             <FilterItem>
                 <a>Sort Products</a>
-                <Select name="order" onChange={handleChange}>
+                <Select name="order" onChange={(e)=>setSort(e.target.value)}>
                     <Option value="Newest">
                         Newest
                     </Option>
