@@ -3,8 +3,10 @@ import { Search} from '@material-ui/icons'
 import styled from 'styled-components'
 import Card from '../components/productCategory/Card'
 import Link from 'next/link'
+import SearchFilter from '../components/search/SearchFilter'
 
 const Section = styled.section`
+    width:100%;
     display:flex;
     align-items:flex-start;
     justify-content:center;
@@ -15,13 +17,13 @@ const Container = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:flex-start;
-    width:92.5%;
+    justify-content:center;
+    width:100%;
     margin-top:3rem;
 `
 
 const ResultGroup = styled.div`
-    width:100%;
+    width:92.5%;
     display: flex;
     flex-wrap: wrap;
     gap: 5rem;
@@ -79,13 +81,16 @@ export async function getStaticProps(context) {
 
 
 const search = ({products}) => {
+    
+
     const [text, setText] = useState("")
     const [results,setResults] = useState([])
+    const [value,setValue] = useState("All")
+    const [sort,setSort] = useState("")
     const handleChange = (e)=>{
         setText(e.target.value);
-        console.log(text)
     }
-
+    console.log(sort)
     const handleSearch = ()=>{
         const items = products.filter((product=>{
             if(text){
@@ -98,14 +103,33 @@ const search = ({products}) => {
                 )
             }
         }))
+        
+        items.reverse()
         setResults(items);
+        setValue("All")
+        setSort("asc")
+        
     }
+
 
     const enterPressed = (e)=>{
         var code = e.keyCode || e.which;
     if(code === 13) { 
         handleSearch()
     } 
+    }
+
+    const subCategories =  [...new Set(results.map(product=>product.subCategory))];
+
+    if(sort==="asc"){
+        
+        results.sort((a,b)=>a.price>b.price?1:-1)
+        
+    }else if(sort==="desc"){
+        
+        results.sort((a,b)=>a.price<b.price?1:-1)
+    }else if(sort==="Newest"){
+        results.reverse()
     }
     return (
         <Section>
@@ -114,8 +138,17 @@ const search = ({products}) => {
                 <Input onChange={handleChange} placeholder='Search...' onKeyPress={enterPressed}></Input>
                 <Search onClick={handleSearch}>Click</Search>
                 </InputContainer>
+                {results.length?<SearchFilter subCategories={subCategories} setValue={setValue} setSort={setSort}></SearchFilter>:<h1 style={{marginTop:'5rem'}}></h1>}
                 <ResultGroup>
-                {results.map((result,index)=>{
+                {value==="All"? results.map((result,index)=>{
+                    return(
+                        <Link href={`/${result.category}/${result.sku}`} passHref key={index}>
+                            <A>
+                            <Card key={index} image={result.image1} price={result.price} name={result.name}></Card>
+                            </A>
+                        </Link>
+                    )
+                }):results.filter((result)=>result.subCategory===value).map((result,index)=>{
                     return(
                         <Link href={`/${result.category}/${result.sku}`} passHref key={index}>
                             <A>
