@@ -80,6 +80,7 @@ const Button = styled.button`
 const checkout = () => {
     const dispatch = useDispatch();
     const [flag,setFlag] = useState(true);
+    const [show,setShow] = useState(true);
     const items = useSelector(state => state.cart.products)
     const products = items.map(item=>{
         return (
@@ -106,6 +107,7 @@ const checkout = () => {
     const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(order)
+        setShow(false)
         CreateOrder()
     }
     const handleChange = (e)=>{
@@ -118,10 +120,12 @@ const checkout = () => {
     const CreateOrder = async()=>{
         try {
             const res = await axios.post(`https://shivoriadmin.vercel.app/api/orders`,order);
-            console.log(JSON.stringify(order));
+            
+            console.log(res.data);
             setFlag(false)
             dispatch(clearProducts())
         } catch (error) {
+            setShow(true)
             alert("Something went wrong. Please fill out the fields in billing details carefully")
             console.log(error);
         }
@@ -149,7 +153,7 @@ const checkout = () => {
                 <h3>Your Order</h3>
                 <Border style={{width:'100%'}}></Border>
                 <Order></Order>
-                <Button onClick={handleSubmit}>Place Order</Button>
+                {show?<Button onClick={handleSubmit}>Place Order</Button>:<Button style={{opacity:0.8}}>Order Placed</Button>}
                 </Container>
             </Wrapper>
             </Section>
