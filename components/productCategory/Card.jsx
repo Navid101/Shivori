@@ -14,17 +14,17 @@ const Container = styled.div`
 
 const ImageContainer = styled.div`
     height: 360px;
-    width: 360px;
+    width: 285px;
     position:relative;
     cursor:pointer;
     @media (max-width:768px){
-        height: auto;
+        height: 240px;
         width: 100%;
     }
 `
-// const Image = styled.img`
-//     height:100%;
-//     width:100%;
+//  const Image = styled.img`
+//      height:100%;
+//      width:100%;
 //     object-fit:contain;
 // `
 
@@ -33,13 +33,13 @@ const Text = styled.h4`
     font-size: 16px;
 
 `
-
+// layout='responsive' height='100%' width='100%' objectFit='contain'
 
 const Card = ({image, name, price}) => {
     return (
         <Container >
             <ImageContainer>
-                <Image src={image} layout='responsive' height='100%' width='100%' objectFit='contain'/>
+                <Image src={image} layout='fill' objectFit='contain'/>
             </ImageContainer>
             <Text>{name}</Text>
             <Text>{`TK ${price}`}</Text>

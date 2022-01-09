@@ -28,7 +28,7 @@ const A = styled.a`
 `
 
 const Container = styled.div`
-    width: 96.5%;
+    width: 92.5%;
     display: flex;
     flex-wrap: wrap;
     gap: 5rem;
