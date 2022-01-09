@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 
 
@@ -13,7 +14,7 @@ const Container = styled.div`
 
 const ImageContainer = styled.div`
     height: 360px;
-    width: 285px;
+    width: 360px;
     position:relative;
     cursor:pointer;
     @media (max-width:768px){
@@ -21,11 +22,11 @@ const ImageContainer = styled.div`
         width: 100%;
     }
 `
-const Image = styled.img`
-    height:100%;
-    width:100%;
-    object-fit:contain;
-`
+// const Image = styled.img`
+//     height:100%;
+//     width:100%;
+//     object-fit:contain;
+// `
 
 const Text = styled.h4`
     color: black;
@@ -34,12 +35,11 @@ const Text = styled.h4`
 `
 
 
-
 const Card = ({image, name, price}) => {
     return (
         <Container >
             <ImageContainer>
-                <Image src={image}/>
+                <Image src={image} layout='responsive' height='100%' width='100%' objectFit='contain'/>
             </ImageContainer>
             <Text>{name}</Text>
             <Text>{`TK ${price}`}</Text>
