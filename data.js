@@ -18,18 +18,8 @@ export const categories = [
     },
     {
         id:2,
-        name:"Kurti",
+        name:"Blouse Piece",
         image: "/assets/icons/kurti.webp"
-    },
-    {
-        id:3,
-        name:"Pant",
-        image: "/assets/icons/pant.webp"
-    },
-    {
-        id:4,
-        name:"Salwar",
-        image: "/assets/icons/salwar.webp"
     },
 
 ]

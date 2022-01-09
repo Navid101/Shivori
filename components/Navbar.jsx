@@ -2,7 +2,7 @@ import { Badge } from '@material-ui/core'
 import { Search, ShoppingCartOutlined } from '@material-ui/icons'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Link from 'next/link'
 import { categories } from '../data'
 import { useSelector } from 'react-redux'
@@ -82,6 +82,13 @@ const Show = styled.div`
 
 
 const Navbar = () => {
+    const [categories, setCategories] = useState([])
+    useEffect(async ()=>{
+        const res = await fetch("https://shivoriadmin.vercel.app/api/products")
+        const data = await res.json()
+        const items = [...new Set(data.data.map((items=>items.category)))];
+        setCategories(items)
+    },)
     const quantity = useSelector(state=>state.cart.quantity);
     return (
         <Container>
@@ -98,8 +105,8 @@ const Navbar = () => {
                     <DropdownButton title="Products">
                         {categories.map((category,index)=>{
                             return(
-                                <Link href={`/${category.name.toLowerCase()}`} key={index} passHref>
-                                    <Dropdown.Item>{category.name}</Dropdown.Item>
+                                <Link href={`/${category.toLowerCase()}`} key={index} passHref>
+                                    <Dropdown.Item>{category}</Dropdown.Item>
                                 </Link>
                             )
                         })}

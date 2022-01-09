@@ -12,7 +12,7 @@ const Container =  styled.div`
 const Error = () => {
     return (
         <Container>
-            <h1>404 Page Does Not Exist</h1>
+            <h1>No Products to show yet</h1>
         </Container>
     )
 }
