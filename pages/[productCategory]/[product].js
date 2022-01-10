@@ -165,9 +165,9 @@ const product = ({products}) => {
                         
                     <ProductInfoContainer>
                         <h3>{item.name}</h3>
-                        <h3>TK: {item.price}</h3>
-                        <h3>Fabric: {item.subCategory}</h3>
+                        <h3>MRP: TK {item.price}</h3>
                         <h3>SKU: {item.sku}</h3>
+                        <h3>Fabric: {item.subCategory}</h3>
                         <h4>{item.desc}</h4>
                         {singleProduct.map((item)=>{
                             if(item.size){
