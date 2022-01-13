@@ -102,6 +102,12 @@ const Image = styled.img`
     height: 100%;
     width: 100%;
     object-fit:contain;
+    
+`
+const MImage = styled.img`
+    height: 100%;
+    width: 100%;
+    object-fit:contain;
     transition: all 0.4s;
     &:hover{
         transform: scale(2);
@@ -173,7 +179,7 @@ const product = ({products}) => {
                             <SmallImage><Image src={item.image3} onClick={()=>setImage(item.image3)} ></Image></SmallImage>              
                     </SmallImageContainer>
                     <MainImage ref={ref}>
-                            <Image src={image} x={mouse.x} y={mouse.y}></Image>
+                            <MImage src={image} x={mouse.x} y={mouse.y}></MImage>
                     </MainImage>
                         
                     <ProductInfoContainer>
