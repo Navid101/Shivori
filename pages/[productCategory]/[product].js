@@ -1,10 +1,11 @@
-import React,{useState} from 'react'
+import React,{useRef, useState} from 'react'
 import FilterSize from '../../components/product/FilterSize'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { addProduct } from '../../redux/cartRedux'
 import { useDispatch } from 'react-redux'
 import CartButton from "./../../components/cart/Button"
+import useMouse from '@react-hook/mouse-position'
 
 
 
@@ -40,6 +41,7 @@ const MainImage = styled.div`
         height: auto;
         width: 100%;
     }
+    overflow:hidden;
          
 `
 
@@ -100,6 +102,11 @@ const Image = styled.img`
     height: 100%;
     width: 100%;
     object-fit:contain;
+    transition: all 0.4s;
+    &:hover{
+        transform: scale(2);
+        transform-origin:${props=>props.x+'px'} ${props=>props.y+'px'} ;
+    }
 `
 
 export const getStaticPaths = async ()=>{
@@ -131,7 +138,13 @@ export async function getStaticProps() {
   }
 
 const product = ({products}) => {
+    
 
+    const ref = useRef(null);
+    const mouse = useMouse(ref, {
+        enterDelay: 100,
+        leaveDelay: 100,
+      })
     const dispatch = useDispatch();
     const [count,setCount] = useState(1);
     const [add,setAdd] = useState(false);
@@ -159,8 +172,8 @@ const product = ({products}) => {
                             <SmallImage><Image src={item.image2} onClick={()=>setImage(item.image2)} ></Image></SmallImage>
                             <SmallImage><Image src={item.image3} onClick={()=>setImage(item.image3)} ></Image></SmallImage>              
                     </SmallImageContainer>
-                    <MainImage>
-                            <Image src={image}></Image>
+                    <MainImage ref={ref}>
+                            <Image src={image} x={mouse.x} y={mouse.y}></Image>
                     </MainImage>
                         
                     <ProductInfoContainer>
