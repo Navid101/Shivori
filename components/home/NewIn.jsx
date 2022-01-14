@@ -59,7 +59,7 @@ const NewIn = () => {
             <Container>
                 {newIns.map((newIn)=>{
                     return(
-                        <Link href={`/${newIn.name.toLowerCase()}`} key={newIn.id}>
+                        <Link href={`/${newIn.name.toLowerCase()}`} key={newIn._id}>
                         <ImageContainer key={newIn.id} style={{cursor:"pointer"}}>
                             <Image src={newIn.image}></Image>
                             {/* <Overlay><h3>{newIn.name}</h3></Overlay> */}

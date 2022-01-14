@@ -1,7 +1,7 @@
 import React from 'react'
 import  Carousel  from 'react-bootstrap/Carousel'
 import styled from 'styled-components'
-import {slides} from '../../data'
+
 
 
 
@@ -21,12 +21,12 @@ const Image =  styled.img`
     object-fit: cover;
 `
 
-const BootCarousel = () => {
+const BootCarousel = ({slides}) => {
     return (
             <Carousel fade indicators={false} interval={1200}>
             {slides.map((slide)=>{
                 return(
-                    <Carousel.Item key={slide.id}>
+                    <Carousel.Item key={slide._id}>
                         <ImageContainer><Image src={slide.image}></Image></ImageContainer>
                     </Carousel.Item>
                 )

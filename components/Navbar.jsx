@@ -88,7 +88,7 @@ const Navbar = () => {
         const data = await res.json()
         const items = [...new Set(data.data.map((items=>items.category)))];
         setCategories(items)
-    },)
+    },[])
     const quantity = useSelector(state=>state.cart.quantity);
     return (
         <Container>

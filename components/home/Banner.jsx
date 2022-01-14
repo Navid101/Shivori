@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import axios from 'axios'
 import styled from 'styled-components'
 
 const Section = styled.section`
@@ -20,15 +21,20 @@ const Image = styled.img`
     object-fit:cover;
 `
 
-const Banner = () => {
+
+
+
+const Banner = ({banners}) => {
+
     return (
         <Section>
-        <Container>
-            <Image src='https://images.unsplash.com/photo-1616756351484-798f37bdffa0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'></Image>
-        </Container>
-        <Container>   
-            <Image src='https://images.unsplash.com/photo-1616756141603-6d37d5cde2a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'></Image>
-        </Container>
+            {banners.map((banner,index)=>{
+                return(
+                    <Container key={index}>
+                        <Image src={banner.image}></Image>
+                    </Container>
+                )
+            })}
         </Section>
     )
 }
