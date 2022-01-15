@@ -184,7 +184,7 @@ const product = ({products}) => {
                             <MImage src={image} x={mouse.x} y={mouse.y}></MImage>
                     </MainImage> */}
                     <MainImage >
-                        <InnerImageZoom src={image} zoomType='hover' zoomScale={0.7}/>
+                        <InnerImageZoom src={image} zoomType='hover' zoomScale={0.7} hideCloseButton='true' hideHint='true'/>
                     </MainImage>
                         
                     <ProductInfoContainer>
