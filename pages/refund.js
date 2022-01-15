@@ -19,7 +19,7 @@ const refund = () => {
         <Container>
             <h1>Return Policy</h1>
             <br></br>
-            <h3>If Product Color/Design As Shown In Our Picture, Inform Us As Soon As You Get The Product With Picture. We Will Exchange The Product. If We Can Not We Will Return The Money</h3>
+            <h3>If Product Color and Design Is Not Shown As In Our Picture, Inform Us As Soon As You Get The Product With Picture. We Will Exchange The Product. If We Can Not We Will Return The Money</h3>
             <br></br>
             <h3>If There Is Any Kind Of Defect In The Product , You Will Have To Inform Us With In 24 Hours With Pictures.We Will Resend The Product. If We Can Not, We Return The Money.</h3>
             <br></br>
