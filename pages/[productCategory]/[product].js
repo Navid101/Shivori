@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import CartButton from "./../../components/cart/Button"
 import useMouse from '@react-hook/mouse-position'
 import InnerImageZoom from 'react-inner-image-zoom';
-import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 
 
 
