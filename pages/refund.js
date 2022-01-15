@@ -5,6 +5,7 @@ const Section = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height:73vh;
 `
 
 const Container = styled.div`
