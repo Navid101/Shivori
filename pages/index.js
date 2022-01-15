@@ -32,7 +32,7 @@ const Home = ({banners,slides,newIns}) => {
     <div>
       <BootCarousel slides={slides}></BootCarousel>
       {/* <Categories></Categories> */}
-      <NewIn></NewIn>
+      <NewIn newIns={newIns}></NewIn>
       <Banner banners={banners}></Banner>
     </div>
   )

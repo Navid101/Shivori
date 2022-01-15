@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { newIns } from '../../data'
+// import { newIns } from '../../data'
 import Link from 'next/link'
 
 const Section = styled.div`
@@ -52,7 +52,7 @@ const H1 = styled.h1`
     padding: 5rem 0;
 `
 
-const NewIn = () => {
+const NewIn = ({newIns}) => {
     return (
         <Section>
             {/* <H1>New In</H1> */}
