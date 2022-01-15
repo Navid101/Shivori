@@ -6,6 +6,8 @@ import { addProduct } from '../../redux/cartRedux'
 import { useDispatch } from 'react-redux'
 import CartButton from "./../../components/cart/Button"
 import useMouse from '@react-hook/mouse-position'
+import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 
 
 
@@ -178,8 +180,11 @@ const product = ({products}) => {
                             <SmallImage><Image src={item.image2} onClick={()=>setImage(item.image2)} ></Image></SmallImage>
                             <SmallImage><Image src={item.image3} onClick={()=>setImage(item.image3)} ></Image></SmallImage>              
                     </SmallImageContainer>
-                    <MainImage ref={ref}>
+                    {/* <MainImage ref={ref}>
                             <MImage src={image} x={mouse.x} y={mouse.y}></MImage>
+                    </MainImage> */}
+                    <MainImage >
+                        <InnerImageZoom src={image} zoomType='hover' zoomScale={0.7}/>
                     </MainImage>
                         
                     <ProductInfoContainer>
