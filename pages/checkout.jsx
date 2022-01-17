@@ -89,6 +89,7 @@ const checkout = () => {
                 price:item.price,
                 quantity:item.quantity,
                 sku:item.sku,
+                size:item.size,
                 image:item.image1
             }
         )
