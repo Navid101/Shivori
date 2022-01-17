@@ -194,17 +194,18 @@ const product = ({products}) => {
                         <h3>SKU: {item.sku}</h3>
                         <h3>Fabric: {item.subCategory}</h3>
                         <h4>{item.desc}</h4>
+                        {stock<=0?
+                        <h3 style={{color:'red'}}>OUT OF STOCK</h3>:
+                        <>
                         {singleProduct.map((item)=>{
                             if(item.size){
                                 return <FilterSize sizes={item.size} key={item.sku} setSize={setSize}></FilterSize>
                             }
                         })}
-                        {stock<=0?
-                        <h3 style={{color:'red'}}>OUT OF STOCK</h3>:
                         <ButtonContainer>
                         {/* <CartButton count={count} setCount={setCount}></CartButton> */}
                         {!add? <Button onClick={handleClick}>ADD TO CART</Button>: <Button style={{opacity:0.8}}>ADDED TO CART</Button>}
-                        </ButtonContainer>}
+                        </ButtonContainer></>}
                     </ProductInfoContainer>
                 </Container>
                 )

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const Section = styled.div`
     margin-top: 3rem;
     width: 100%;
-    height: 7rem;
+    height: 9rem;
     background-color: #000000;
     display: flex;
     align-items: center;
