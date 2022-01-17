@@ -1,4 +1,4 @@
-import { Facebook, Instagram,MailOutline} from '@material-ui/icons'
+import { Facebook, Instagram,MailOutline, PhoneAndroid} from '@material-ui/icons'
 import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
@@ -32,6 +32,7 @@ const Left = styled.div`
     flex-direction:column;
     justify-content: flex-start;
     color: white;
+    row-gap:10px;
     @media (max-width:768px){
         align-items:center;
   
@@ -55,6 +56,13 @@ const FooterLink = styled.a`
     }
 `
 
+const Contact = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    row-gap:10px;
+`
+
 const Footer = () => {
 
     const sendMail = ()=>{
@@ -68,11 +76,18 @@ const Footer = () => {
                     <Link href="/about"><FooterLink>About Us</FooterLink></Link>
                     <Link href="/refund"><FooterLink>Refund And Return Policy</FooterLink></Link>
                 </Left>
-                <Right>
-                    <FooterLink href="https://www.facebook.com/shivorisaree" target="blank"><Facebook></Facebook></FooterLink>
-                    <FooterLink href="https://www.instagram.com/shivori/" target="blank"><Instagram></Instagram></FooterLink>
-                    <FooterLink onClick={sendMail}><MailOutline></MailOutline></FooterLink>
-                </Right>
+                <Contact>
+                    <Right style={{gap:'1.6rem'}}>
+                        <FooterLink ><PhoneAndroid></PhoneAndroid></FooterLink>
+                        <FooterLink>01782141845</FooterLink>
+                    </Right>
+                    <Right>
+                        <FooterLink href="https://www.facebook.com/shivorisaree" target="blank"><Facebook></Facebook></FooterLink>
+                        <FooterLink href="https://www.instagram.com/shivori/" target="blank"><Instagram></Instagram></FooterLink>
+                        <FooterLink onClick={sendMail}><MailOutline></MailOutline></FooterLink>
+                    </Right>
+
+                </Contact>
             </Container>
         </Section>
     )

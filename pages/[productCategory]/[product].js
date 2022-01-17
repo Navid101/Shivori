@@ -147,7 +147,7 @@ export async function getStaticProps() {
 
 const product = ({products}) => {
     
-
+    const [size,setSize] = useState("");
     const ref = useRef(null);
     const mouse = useMouse(ref, {
         enterDelay: 100,
@@ -161,11 +161,12 @@ const product = ({products}) => {
     const {product} = router.query
 
     const singleProduct = products.filter(item=>item.sku===product)
+    const stock = singleProduct[0].stock;
 
     const [image,setImage] = useState(singleProduct[0].image1);
     const handleClick = ()=>{
         setAdd(true)
-        dispatch(addProduct({singleProduct,count}));
+        dispatch(addProduct({singleProduct,count,size}));
         setTimeout(() => {
             window.scrollTo({ top: 0, behavior: 'smooth' })
         }, 0)
@@ -184,7 +185,7 @@ const product = ({products}) => {
                             <MImage src={image} x={mouse.x} y={mouse.y}></MImage>
                     </MainImage> */}
                     <MainImage >
-                        <InnerImageZoom src={image} zoomType='hover' zoomScale={0.7} hideCloseButton='true' hideHint='true'/>
+                        <InnerImageZoom src={image} zoomType='hover' zoomScale={0.7} hideCloseButton={true} hideHint={true}/>
                     </MainImage>
                         
                     <ProductInfoContainer>
@@ -195,13 +196,15 @@ const product = ({products}) => {
                         <h4>{item.desc}</h4>
                         {singleProduct.map((item)=>{
                             if(item.size){
-                                return <FilterSize sizes={item.size} key={item.sku}></FilterSize>
+                                return <FilterSize sizes={item.size} key={item.sku} setSize={setSize}></FilterSize>
                             }
                         })}
+                        {stock<=0?
+                        <h3 style={{color:'red'}}>OUT OF STOCK</h3>:
                         <ButtonContainer>
-                            {/* <CartButton count={count} setCount={setCount}></CartButton> */}
-                            {!add? <Button onClick={handleClick}>ADD TO CART</Button>: <Button style={{opacity:0.8}}>ADDED TO CART</Button>}
-                        </ButtonContainer>
+                        {/* <CartButton count={count} setCount={setCount}></CartButton> */}
+                        {!add? <Button onClick={handleClick}>ADD TO CART</Button>: <Button style={{opacity:0.8}}>ADDED TO CART</Button>}
+                        </ButtonContainer>}
                     </ProductInfoContainer>
                 </Container>
                 )

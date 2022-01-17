@@ -32,10 +32,10 @@ const Option = styled.option`
     width: 30px;
 `
 
-const FilterSize = ({sizes}) => {
+const FilterSize = ({sizes,setSize}) => {
     return (
         <FilterContainer>
-            <FilterItem>
+            <FilterItem onChange={(e)=>setSize(e.target.value)}>
                 <FilterText>Select Size</FilterText>
                 <Select>
                     {sizes.split(",").map((size,index)=>{
