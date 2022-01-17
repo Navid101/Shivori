@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const Section = styled.div`
     margin-top: 3rem;
     width: 100%;
-    height: 9rem;
+    min-height: 9rem;
     background-color: #000000;
     display: flex;
     align-items: center;
@@ -23,6 +23,7 @@ const Container = styled.div`
         grid-template-columns: 1fr;
         justify-items: center;
         row-gap: 1rem;
+        padding:1rem 0;
   
     }
 `
