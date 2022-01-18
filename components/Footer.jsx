@@ -80,7 +80,7 @@ const Footer = () => {
                 <Contact>
                     <Right style={{gap:'1.6rem'}}>
                         <FooterLink ><PhoneAndroid></PhoneAndroid></FooterLink>
-                        <FooterLink>01782141845</FooterLink>
+                        <FooterLink>XXXXXXXXXXX</FooterLink>
                     </Right>
                     <Right>
                         <FooterLink href="https://www.facebook.com/shivorisaree" target="blank"><Facebook></Facebook></FooterLink>
