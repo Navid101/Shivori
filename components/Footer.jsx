@@ -78,9 +78,9 @@ const Footer = () => {
                     <Link href="/refund"><FooterLink>Refund And Return Policy</FooterLink></Link>
                 </Left>
                 <Contact>
-                    <Right style={{gap:'1.6rem'}}>
+                    <Right style={{gap:'2px'}}>
                         <FooterLink ><PhoneAndroid></PhoneAndroid></FooterLink>
-                        <FooterLink>XXXXXXXXXXX</FooterLink>
+                        <FooterLink>+8801784699839</FooterLink>
                     </Right>
                     <Right>
                         <FooterLink href="https://www.facebook.com/shivorisaree" target="blank"><Facebook></Facebook></FooterLink>
